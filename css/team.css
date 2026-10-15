@@ -1,0 +1,172 @@
+#team {
+  min-height: calc(100vh - var(--nav-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-block: 3.5rem 4rem;
+  box-sizing: border-box;
+  scroll-margin-top: var(--nav-h);
+}
+
+.team-header {
+  max-width: 680px;
+  margin-inline: auto;
+  margin-bottom: 2rem;
+}
+
+.team-eyebrow {
+  display: inline-block;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
+
+#team .section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: .8rem;
+}
+
+#team .section-title::after {
+  margin-inline: auto;
+}
+
+.team-desc {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1140px;
+  margin-inline: auto;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.member {
+  position: relative;
+  padding: 0;
+  text-align: center;
+  border-radius: var(--radius);
+  background: var(--card);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+  transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .35s ease, border-color .35s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.member:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 36px color-mix(in srgb, var(--accent) 22%, transparent), 0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.member-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  width: 100%;
+  height: 100%;
+  padding: 2.2rem 1.2rem 1.8rem;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.member-photo-wrap {
+  position: relative;
+  margin-bottom: .5rem;
+}
+
+.member-photo {
+  width: 120px;
+  height: 120px;
+  border: 3px solid var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 35%, transparent);
+  object-fit: cover;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.member:hover .member-photo {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 0 32px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.member h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text);
+  transition: color .3s ease;
+}
+
+.member:hover h3 {
+  color: var(--accent);
+}
+
+.member-tag {
+  display: inline-block;
+  margin-top: .35rem;
+  padding: .28rem 1rem;
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  color: var(--accent);
+  font-size: .84rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  transition: all .3s ease;
+}
+
+.member:hover .member-tag {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #0a0c1c;
+  border-color: transparent;
+  box-shadow: 0 0 16px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.member-hint {
+  margin-top: .5rem;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--muted);
+  opacity: .5;
+  transition: opacity .3s, transform .3s, color .3s;
+}
+
+.member:hover .member-hint {
+  opacity: 1;
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.badge {
+  position: absolute;
+  top: .9rem;
+  left: .9rem;
+  padding: .15rem .75rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #0a0c1c;
+  font-size: .75rem;
+  font-weight: 700;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 30%, transparent);
+}

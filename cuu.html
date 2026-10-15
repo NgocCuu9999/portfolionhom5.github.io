@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Thông tin cá nhân của Nguyễn Ngọc Cửu – sinh viên Công nghệ thông tin, định hướng Computer Vision Engineer.">
+  <title>Nguyễn Ngọc Cửu – Thông tin cá nhân</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/team.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/info.css">
+
+  <script src="js/utils.js"></script>
+</head>
+
+<body>
+  <canvas id="space" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#main">Bỏ qua menu</a>
+
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Menu chính">
+      <a class="logo" href="index.html">SMURF<span>.</span></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">← Trang chủ</a></li>
+        <li><a href="#profile">Hồ sơ</a></li>
+        <li><a href="#about">Giới thiệu</a></li>
+        <li><a href="#skills">Kỹ năng</a></li>
+        <li><a href="#experience">Kinh nghiệm</a></li>
+        <li><a href="#projects">Dự án</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Đổi giao diện sáng / tối">☾</button>
+      <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Mở menu">☰</button>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section id="profile" class="info-hero container" aria-labelledby="profileTitle">
+      <div class="profile-card reveal">
+        <div class="profile-visual">
+          <div class="profile-ring">
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <img class="profile-avatar" src="./images/cuu.png" data-label="Ảnh của bạn" alt="Ảnh đại diện của Nguyễn Ngọc Cửu">
+          </div>
+        </div>
+
+        <div class="profile-info">
+          <p class="profile-eyebrow">✦ Thông tin cá nhân</p>
+          <h1 id="profileTitle" class="gradient-text">Nguyễn Ngọc Cửu</h1>
+          <p class="profile-tagline">Sinh viên Công nghệ thông tin · Computer Vision Engineer</p>
+          
+          <div class="profile-stats">
+            <div class="stat">
+              <span class="stat-number" data-count="3">0</span>
+              <span class="stat-label">Dự án</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-count="2">0</span>
+              <span class="stat-label">Chứng chỉ</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-count="6">0</span>
+              <span class="stat-label">Kỹ năng</span>
+            </div>
+          </div>
+
+          <div class="profile-actions">
+            <a class="btn" href="#contact">Liên hệ ngay</a>
+            <a class="btn ghost" href="index.html">← Quay lại</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section container" aria-labelledby="aboutTitle">
+      <h2 id="aboutTitle" class="section-title">Giới thiệu bản thân</h2>
+      <div class="about-grid">
+        <div class="reveal">
+          <p>Mình là Nguyễn Ngọc Cửu, sinh viên năm cuối ngành Công nghệ thông tin. Mình yêu thích tiếng Nhật, lập trình AI và Computer Vision và luôn muốn biến ý tưởng thành sản phẩm chạy được. Ngoài giờ học, mình thích tìm hiểu về vũ trụ và lập trình các hiệu ứng chuyển động.</p>
+          <p>Mình làm việc có trách nhiệm, thích học hỏi và sẵn sàng làm việc nhóm.</p>
+        </div>
+        <dl class="card info-card reveal">
+          <div><dt>Họ và tên</dt><dd>Nguyễn Ngọc Cửu</dd></div>
+          <div><dt>Ngành học</dt><dd>Công nghệ thông tin</dd></div>
+          <div><dt>Trường</dt><dd>Trường Đại học Bình Dương</dd></div>
+          <div><dt>Định hướng</dt><dd>Computer Vision Engineer</dd></div>
+        </dl>
+      </div>
+
+      <h3 class="sub-title">Mục tiêu nghề nghiệp</h3>
+      <div class="grid-2">
+        <article class="card reveal">
+          <h4>Ngắn hạn (1 năm)</h4>
+          <p>Hoàn thiện kỹ năng AI và Computer Vision, học tiếng Nhật N2.</p>
+        </article>
+        <article class="card reveal">
+          <h4>Dài hạn (3–5 năm)</h4>
+          <p>Trở thành lập trình viên AI và Computer Vision chuyên nghiệp, học thêm Database, IT support để trợ giúp cho công việc.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section container" aria-labelledby="skillsTitle">
+      <h2 id="skillsTitle" class="section-title">Kỹ năng</h2>
+      <ul class="skill-grid">
+        <li class="skill reveal"><div class="skill-head"><span>Python</span><span>90%</span></div><div class="bar" role="img" aria-label="Python 90%"><span style="--level:90%"></span></div></li>
+        <li class="skill reveal"><div class="skill-head"><span>C#</span><span>85%</span></div><div class="bar" role="img" aria-label="C# 85%"><span style="--level:85%"></span></div></li>
+        <li class="skill reveal"><div class="skill-head"><span>JavaScript</span><span>75%</span></div><div class="bar" role="img" aria-label="JavaScript 75%"><span style="--level:75%"></span></div></li>
+        <li class="skill reveal"><div class="skill-head"><span>Git / Github</span><span>70%</span></div><div class="bar" role="img" aria-label="Git 70%"><span style="--level:70%"></span></div></li>
+        <li class="skill reveal"><div class="skill-head"><span>HTML</span><span>60%</span></div><div class="bar" role="img" aria-label="HTML 60%"><span style="--level:60%"></span></div></li>
+        <li class="skill reveal"><div class="skill-head"><span>JAVA / CSS</span><span>65%</span></div><div class="bar" role="img" aria-label="JAVA/CSS 65%"><span style="--level:65%"></span></div></li>
+      </ul>
+    </section>
+
+    <section id="experience" class="section container" aria-labelledby="expTitle">
+      <h2 id="expTitle" class="section-title">Học vấn &amp; Kinh nghiệm</h2>
+
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" role="tab" aria-selected="true" data-tab="tab-edu">Học vấn</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-work">Kinh nghiệm</button>
+        <button class="tab-btn" role="tab" aria-selected="false" data-tab="tab-act">Hoạt động</button>
+      </div>
+
+      <div class="tab-panel" id="tab-edu" role="tabpanel">
+        <ol class="timeline">
+          <li><time>2021 – nay</time><h4>Trường đại học Bình Dương – Công nghệ thông tin</h4><p>GPA 3.0/4.0. Các môn nổi bật: Máy học trong thị giác máy tính, Lập trình hướng đối tượng, Phát triển ứng dụng thực tế ảo.</p></li>
+          <li><time>2024 – 2025</time><h4>Tokyo University</h4><p>Sinh viên trao đổi.</p></li>
+        </ol>
+      </div>
+      <div class="tab-panel" id="tab-work" role="tabpanel" hidden>
+        <ol class="timeline">
+          <li><time>03/2026 – nay</time><h4>Partime System Enginner - Trung Tâm dữ liệu VIETTEL</h4><p>Quản trị hệ thống Linux. Giám sát hiệu năng và giải quyết sự cố.</p></li>
+        </ol>
+      </div>
+      <div class="tab-panel" id="tab-act" role="tabpanel" hidden>
+        <ol class="timeline">
+          <li><time>2023</time><h4>Tình nguyện Mùa hè xanh</h4><p>Dạy tin học cho học sinh vùng nông thôn.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="projects" class="section container" aria-labelledby="projTitle">
+      <h2 id="projTitle" class="section-title">Dự án cá nhân</h2>
+
+      <div class="filters" role="group" aria-label="Lọc dự án">
+        <button class="filter-btn active" data-filter="all">Tất cả</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="app">Ứng dụng</button>
+        <button class="filter-btn" data-filter="research">Nghiên cứu</button>
+      </div>
+
+      <div class="project-grid" id="projectGrid">
+        <article class="card project" data-category="web">
+          <figure><img src="./images/weblk.png" alt="Giao diện website bán linh kiện điện tử"></figure>
+          <div class="project-body">
+            <h3>Website bán linh kiện điện tử</h3>
+            <p class="project-desc">Website nhiều trang gồm danh mục, giỏ hàng, tìm kiếm thông minh và trang chi tiết sản phẩm. Dữ liệu lưu bằng localStorage, giao diện chủ đề trắng với hiệu ứng RGB.</p>
+            <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            <div class="project-links">
+              <a class="btn small" href="https://ngoccuu9999.github.io/webmachviet.github.io/" target="_blank" rel="noopener">Xem trang web</a>
+              <a class="link" href="https://github.com/NgocCuu9999/webmachviet.github.io" target="_blank" rel="noopener">Mã nguồn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project" data-category="app">
+          <figure><img src="./images/vp.png" alt="Phát hiện viêm phổi qua ảnh X-quang"></figure>
+          <div class="project-body">
+            <h3>Ứng dụng Phát hiện viêm phổi qua ảnh X-quang</h3>
+            <p class="project-desc">Ứng dụng dự đoán viêm phổi thông qua ảnh X-Quang giúp bác sĩ kiểm tra và sàng lọc 1 cách nhanh hơn.</p>
+            <ul class="tags"><li>Python</li></ul>
+            <div class="project-links">
+              <a class="btn small" href="https://github.com/NgocCuu9999/viemphoi" target="_blank" rel="noopener">Xem trang web</a>
+              <a class="link" href="https://github.com/NgocCuu9999/viemphoi" target="_blank" rel="noopener">Mã nguồn</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card project" data-category="game">
+          <figure><img src="images/project3.jpg" alt="Ức chế của mắt"></figure>
+          <div class="project-body">
+            <h3>VR kiểm tra độ ức chế cảm nhận của mắt</h3>
+            <p class="project-desc">Đây là soucre code unityhub giúp người dùng biết được sự ức chế khi mắt đi vào các điểm chấm sáng để phát triển dự án VR trong tương lai.</p>
+            <ul class="tags"><li>C#</li><li>Python</li></ul>
+            <div class="project-links">
+              <a class="btn small" href="https://your-game-url.com" target="_blank" rel="noopener">Xem trang web</a>
+              <a class="link" href="https://github.com/your-username/repo" target="_blank" rel="noopener">Mã nguồn</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="extras" class="section container" aria-labelledby="extraTitle">
+      <h2 id="extraTitle" class="section-title">Chứng chỉ, giải thưởng &amp; sở thích</h2>
+      <div class="grid-3">
+        <article class="card reveal">
+          <h3>Chứng chỉ</h3>
+          <ul class="bullets"><li>JLPT N3 (2026)</li><li>Azure Fundamental(AZ-900)</li></ul>
+        </article>
+        <article class="card reveal">
+          <h3>Giải thưởng</h3>
+          <p class="muted">Chưa có</p>
+        </article>
+        <article class="card reveal">
+          <h3>Sở thích</h3>
+          <ul class="bullets"><li>Nghe nhạc</li><li>Du lịch</li><li>Xe thể thao</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section container" aria-labelledby="contactTitle">
+      <h2 id="contactTitle" class="section-title">Liên hệ</h2>
+      <div class="contact-grid">
+        <address class="card contact-info reveal">
+          <p><strong>Email:</strong> <a href="mailto:21050014@student.bdu.edu.vn">21050014@student.bdu.edu.vn</a></p>
+          <p><strong>Điện thoại:</strong> <a href="tel:0900000000">0963 202 697</a></p>
+          <p><strong>Địa chỉ:</strong> TP. Hồ Chí Minh</p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/NgocCuu9999" target="_blank" rel="noopener">https://github.com/NgocCuu9999</a></p>
+        </address>
+
+        <form class="card contact-form reveal" id="contactForm" novalidate>
+          <label>Họ và tên
+            <input type="text" id="cName" name="name" autocomplete="name">
+            <small class="error" aria-live="polite"></small>
+          </label>
+          <label>Email
+            <input type="email" id="cEmail" name="email" autocomplete="email">
+            <small class="error" aria-live="polite"></small>
+          </label>
+          <label>Nội dung
+            <textarea id="cMessage" name="message" rows="4"></textarea>
+            <small class="error" aria-live="polite"></small>
+          </label>
+          <button class="btn" type="submit">Gửi tin nhắn</button>
+          <p class="form-ok" id="formOk" role="status" hidden>Cảm ơn bạn! Tin nhắn đã được gửi (bản minh họa).</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Nguyễn Ngọc Cửu · Portfolio cá nhân</p>
+  </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Lên đầu trang" hidden>▲</button>
+
+  <script src="js/space.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/info.js"></script>
+</body>
+</html>

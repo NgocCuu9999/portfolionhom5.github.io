@@ -1,0 +1,221 @@
+.info-hero {
+  padding-block: 3rem 1rem;
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+}
+
+.profile-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+  padding: 2.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent,
+    color-mix(in srgb, var(--accent) 8%, transparent),
+    transparent,
+    color-mix(in srgb, var(--accent2) 8%, transparent),
+    transparent
+  );
+  animation: spin 12s linear infinite;
+  z-index: -1;
+}
+
+.profile-visual {
+  display: grid;
+  place-items: center;
+}
+
+.profile-ring {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: grid;
+  place-items: center;
+}
+
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px dashed var(--line);
+}
+
+.ring-1 {
+  inset: 5%;
+  animation: spin 14s linear infinite;
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.ring-2 {
+  inset: -5%;
+  animation: spin 22s linear infinite reverse;
+  border-color: color-mix(in srgb, var(--accent2) 30%, transparent);
+}
+
+.ring-1::after,
+.ring-2::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+
+.ring-2::after {
+  background: var(--accent2);
+  box-shadow: 0 0 12px var(--accent2);
+}
+
+.profile-avatar {
+  width: 160px;
+  height: 160px;
+  border: 4px solid var(--accent);
+  border-radius: 50%;
+  box-shadow:
+    0 0 40px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 0 80px color-mix(in srgb, var(--accent2) 15%, transparent);
+  object-fit: cover;
+  animation: float 6s ease-in-out infinite;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.profile-eyebrow {
+  color: var(--accent);
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.profile-info .gradient-text {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.1;
+}
+
+.profile-tagline {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.profile-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .1rem;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stat-label {
+  font-size: .8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 600;
+}
+
+.profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .profile-visual {
+    justify-self: center;
+  }
+
+  .profile-ring {
+    width: 180px;
+    height: 180px;
+  }
+
+  .profile-avatar {
+    width: 130px;
+    height: 130px;
+  }
+
+  .profile-info {
+    align-items: center;
+  }
+
+  .profile-stats {
+    justify-content: center;
+  }
+
+  .profile-actions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-ring {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile-avatar {
+    width: 110px;
+    height: 110px;
+  }
+
+  .profile-stats {
+    gap: 1.2rem;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+}

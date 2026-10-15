@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio cá nhân của Nguyễn Văn A – sinh viên Công nghệ thông tin, định hướng Web Developer.">
+  <title>Nguyễn Văn A – Portfolio</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/team.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script src="js/utils.js"></script>
+</head>
+
+<body>
+  <canvas id="space" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#main">Bỏ qua menu</a>
+
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Menu chính">
+      <a class="logo" href="#home">SMURF<span>.</span></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Trang chủ</a></li>
+        <li><a href="#team">Nhóm</a></li>
+
+      </ul>
+
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Đổi giao diện sáng / tối">☾</button>
+      <button class="icon-btn menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Mở menu">☰</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero container" aria-labelledby="heroTitle">
+      <div class="hero-text">
+        <p class="eyebrow">Xin chào, mình là</p>
+        <h1 id="heroTitle" class="gradient-text"><a href="cuu.html" class="name-link" title="Xem thông tin cá nhân">Nguyễn Ngọc Cửu</a></h1>
+        <p class="typing"><span id="typing"></span><span class="cursor" aria-hidden="true">|</span></p>
+        <p class="lead">Mình là trưởng nhóm của nhóm  sinh viên ngành Công nghệ thông tin, định hướng trở thành Computer Vision Engineer.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#team">Xem nhóm</a>
+          <a class="btn ghost" href="cuu.html">Hồ sơ cá nhân</a>
+        </div>
+      </div>
+
+      <figure class="hero-visual">
+        <div class="orbit orbit-1"><i></i></div>
+        <div class="orbit orbit-2"><i></i></div>
+        <img class="avatar" src="./images/cuu.png" data-label="Ảnh của bạn" alt="Ảnh đại diện của Nguyễn Ngọc Cửu">
+      </figure>
+    </section>
+
+    <section id="team" class="section container" aria-labelledby="teamTitle">
+      <div class="team-header reveal">
+        <span class="team-eyebrow">✦ Đội ngũ thành viên</span>
+        <h2 id="teamTitle" class="section-title gradient-text">Nhóm của mình</h2>
+        <p class="team-desc">Các thành viên đồng hành trong dự án. Bấm vào từng thành viên để khám phá hồ sơ cá nhân.</p>
+      </div>
+
+      <div class="team-grid" id="teamGrid">
+        <article class="card member owner reveal">
+          <a class="member-main" href="cuu.html" title="Xem thông tin Nguyễn Ngọc Cửu">
+            <div class="member-photo-wrap">
+              <img class="member-photo" src="./images/cuu.png" data-label="Ảnh của bạn" alt="Ảnh đại diện của Nguyễn Ngọc Cửu">
+            </div>
+            <h3>Nguyễn Ngọc Cửu</h3>
+            <span class="member-tag">Trưởng nhóm</span>
+            <span class="member-hint">愛してる</span>
+          </a>
+          <span class="badge">Mình</span>
+        </article>
+
+        <article class="card member reveal">
+          <a class="member-main" href="hieu.html" title="Xem thông tin Trần Minh Hiếu">
+            <div class="member-photo-wrap">
+              <img class="member-photo" src="./images/anh1.jpeg" alt="Ảnh đại diện của Trần Minh Hiếu">
+            </div>
+            <h3>Trần Minh Hiếu</h3>
+            <span class="member-tag">Thành viên</span>
+            <span class="member-hint">Xem hồ sơ →</span>
+          </a>
+        </article>
+
+        <article class="card member reveal">
+          <a class="member-main" href="my.html" title="Xem thông tin Nguyễn Thị Trà My">
+            <div class="member-photo-wrap">
+              <img class="member-photo" src="./images/my.svg" alt="Ảnh đại diện của Nguyễn Thị Trà My">
+            </div>
+            <h3>Nguyễn Thị Trà My</h3>
+            <span class="member-tag">Thành viên</span>
+            <span class="member-hint">Xem hồ sơ →</span>
+          </a>
+        </article>
+
+        <article class="card member reveal">
+          <a class="member-main" href="quan.html" title="Xem thông tin Lê Nguyễn Minh Quân">
+            <div class="member-photo-wrap">
+              <img class="member-photo" src="./images/quan.svg" alt="Ảnh đại diện của Lê Nguyễn Minh Quân">
+            </div>
+            <h3>Lê Nguyễn Minh Quân</h3>
+            <span class="member-tag">Thành viên</span>
+            <span class="member-hint">Xem hồ sơ →</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Nguyễn Ngọc Cửu · Portfolio cá nhân</p>
+  </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Lên đầu trang" hidden>▲</button>
+
+  <dialog class="modal" id="projectModal" aria-labelledby="modalTitle">
+    <button class="icon-btn modal-close" type="button" id="modalClose" aria-label="Đóng">×</button>
+    <img id="modalImg" alt="">
+    <div class="modal-body">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <ul class="tags" id="modalTags"></ul>
+      <a class="btn small" id="modalLink" href="#" target="_blank" rel="noopener">Xem mã nguồn</a>
+    </div>
+  </dialog>
+
+  <script src="js/space.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>
