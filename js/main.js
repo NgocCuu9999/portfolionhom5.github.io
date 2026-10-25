@@ -1,17 +1,36 @@
+/* ==========================================================================
+   MAIN JAVASCRIPT - INTERACTIVE & CYBER-CHIC EXPERIENCE
+   Tran Minh Hieu - Student Portfolio
+   ========================================================================== */
+
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initMobileNav();
+  initCustomCursor();
+  initClickRipple();
+  initInteractiveCanvas();
+  initCardSpotlightAndTilt();
+  initMagneticElements();
+  initHeroAvatarParallax();
+  initSmoothScrollLinks();
   initTypingEffect();
   initReadingProgressBar();
   initScrollSpyAndHeader();
   initScrollToTop();
   initSkillBars();
+  initStatCounters();
   initTimelineTabs();
   initProjectFilter();
   initProjectModal();
   initContactForm();
+  initEmailCopy();
+  initScrollReveal();
+  initScrollParallax();
 });
 
+/* ==========================================================================
+   1. THEME TOGGLE (DARK / LIGHT MODE)
+   ========================================================================== */
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
   if (!toggleBtn) return;
@@ -28,15 +47,17 @@ function initThemeToggle() {
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(toggleBtn, newTheme);
-    showToast(`Đã chuyển sang giao diện ${newTheme === 'dark' ? 'Tối' : 'Sáng'}`);
+    showToast(`Đã chuyển sang giao diện ${newTheme === 'dark' ? 'Tối (Space Grey)' : 'Sáng (Xám Trắng Tinh Tế)'}`, 'info');
   });
 }
 
 function updateThemeIcon(btn, theme) {
-  btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
   btn.setAttribute('aria-label', `Chuyển sang giao diện ${theme === 'dark' ? 'sáng' : 'tối'}`);
 }
 
+/* ==========================================================================
+   2. MOBILE NAVIGATION
+   ========================================================================== */
 function initMobileNav() {
   const mobileToggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
@@ -64,23 +85,418 @@ function initMobileNav() {
   });
 }
 
+/* ==========================================================================
+   3. CUSTOM CYBER CURSOR (DESKTOP INTERACTIVE)
+   ========================================================================== */
+function initCustomCursor() {
+  const cursor = document.getElementById('custom-cursor');
+  const follower = document.getElementById('custom-cursor-follower');
+
+  if (!cursor || !follower || window.matchMedia('(pointer: coarse)').matches) return;
+
+  let mouseX = -100, mouseY = -100;
+  let cursorX = -100, cursorY = -100;
+  let followerX = -100, followerY = -100;
+  let isInitialized = false;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!isInitialized) {
+      cursorX = mouseX;
+      cursorY = mouseY;
+      followerX = mouseX;
+      followerY = mouseY;
+      isInitialized = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener('mousedown', () => {
+    cursor.classList.add('clicking');
+    follower.classList.add('clicking');
+  });
+
+  window.addEventListener('mouseup', () => {
+    cursor.classList.remove('clicking');
+    follower.classList.remove('clicking');
+  });
+
+  function renderCursor() {
+    // Ultra smooth linear interpolation (Lerp)
+    cursorX += (mouseX - cursorX) * 0.75;
+    cursorY += (mouseY - cursorY) * 0.75;
+    followerX += (mouseX - followerX) * 0.12;
+    followerY += (mouseY - followerY) * 0.12;
+
+    cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+    follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
+
+    requestAnimationFrame(renderCursor);
+  }
+  requestAnimationFrame(renderCursor);
+
+  // Interactive Hover Magnification across all clickable & card elements
+  const updateHoverElements = () => {
+    const interactiveElements = document.querySelectorAll(
+      'a, button, .btn, .theme-switch, .project-card, .skill-category-card, .objective-card, .hobby-item, .timeline-content-card, .highlight-box, .stat-card-glass, .developer-spec-terminal, .avatar-circle-chip, .about-pill, .filter-btn'
+    );
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hovering');
+        follower.classList.add('hovering');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hovering');
+        follower.classList.remove('hovering');
+      });
+    });
+  };
+  updateHoverElements();
+
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+    follower.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+    follower.style.opacity = '1';
+  });
+}
+
+/* ==========================================================================
+   4. INTERACTIVE CONSTELLATION PARTICLES CANVAS
+   ========================================================================== */
+function initInteractiveCanvas() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  const particleCount = window.innerWidth < 768 ? 35 : 70;
+  let mouse = { x: null, y: null, radius: 150 };
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  window.addEventListener('mouseout', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.size = Math.random() * 3.5 + 1.8;
+      this.speedX = (Math.random() - 0.5) * 0.45;
+      this.speedY = (Math.random() - 0.5) * 0.45;
+    }
+
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      if (this.x < 0 || this.x > width) this.speedX *= -1;
+      if (this.y < 0 || this.y > height) this.speedY *= -1;
+
+      // Smooth Fluid Cursor Proximity
+      if (mouse.x !== null && mouse.y !== null) {
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < mouse.radius) {
+          const force = (mouse.radius - dist) / mouse.radius;
+          this.x -= (dx / dist) * force * 2.2;
+          this.y -= (dy / dist) * force * 2.2;
+        }
+      }
+    }
+
+    draw(isDark) {
+      ctx.beginPath();
+      const grad = ctx.createRadialGradient(
+        this.x - this.size * 0.35,
+        this.y - this.size * 0.35,
+        this.size * 0.15,
+        this.x,
+        this.y,
+        this.size * 1.4
+      );
+      if (isDark) {
+        grad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+        grad.addColorStop(0.35, 'rgba(203, 213, 225, 0.65)');
+        grad.addColorStop(1, 'rgba(148, 163, 184, 0.08)');
+      } else {
+        grad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
+        grad.addColorStop(0.35, 'rgba(148, 163, 184, 0.45)');
+        grad.addColorStop(1, 'rgba(203, 213, 225, 0.08)');
+      }
+      ctx.arc(this.x, this.y, this.size * 1.3, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+    // Connect particles
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw(isDark);
+
+      for (let j = i + 1; j < particles.length; j++) {
+        let dx = particles[i].x - particles[j].x;
+        let dy = particles[i].y - particles[j].y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 110) {
+          let opacity = (1 - dist / 110) * (isDark ? 0.25 : 0.15);
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = isDark ? `rgba(203, 213, 225, ${opacity})` : `rgba(100, 116, 139, ${opacity})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+
+      // Connect to mouse
+      if (mouse.x !== null && mouse.y !== null) {
+        let dx = particles[i].x - mouse.x;
+        let dy = particles[i].y - mouse.y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < mouse.radius) {
+          let opacity = (1 - dist / mouse.radius) * 0.4;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = isDark ? `rgba(241, 245, 249, ${opacity})` : `rgba(71, 85, 105, ${opacity})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
+/* ==========================================================================
+   5. CARD SPOTLIGHT GLOW EFFECT & 3D PERSPECTIVE TILT (SPRING LERP PHYSICS)
+   ========================================================================== */
+function initCardSpotlightAndTilt() {
+  const cards = document.querySelectorAll(
+    '.hero-avatar-circular, .stat-card-glass, .developer-spec-terminal, .about-card-left, .objective-card, .skill-category-card, .timeline-content-card, .project-card, .extra-card, .contact-info-card, .contact-form-card, .highlight-box'
+  );
+
+  const isTouch = window.matchMedia('(pointer: coarse)').matches;
+
+  cards.forEach(card => {
+    card.classList.add('tilt-card');
+    let isHovered = false;
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    let rafId = null;
+
+    function renderTilt() {
+      if (!isHovered) return;
+      // Smooth spring lerp interpolation
+      currentX += (targetX - currentX) * 0.14;
+      currentY += (targetY - currentY) * 0.14;
+
+      card.style.transform = `perspective(1000px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg) scale3d(1.025, 1.025, 1.025) translate3d(0, -6px, 0)`;
+      rafId = requestAnimationFrame(renderTilt);
+    }
+
+    card.addEventListener('mouseenter', () => {
+      isHovered = true;
+      card.classList.add('is-tilting');
+      rafId = requestAnimationFrame(renderTilt);
+    });
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Spotlight reflection coordinates
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+
+      if (!isTouch) {
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        targetX = ((y - centerY) / centerY) * -7;
+        targetY = ((x - centerX) / centerX) * 7;
+      }
+    });
+
+    card.addEventListener('mouseleave', () => {
+      isHovered = false;
+      card.classList.remove('is-tilting');
+      if (rafId) cancelAnimationFrame(rafId);
+      currentX = 0;
+      currentY = 0;
+      targetX = 0;
+      targetY = 0;
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translate3d(0, 0, 0)';
+    });
+  });
+}
+
+/* ==========================================================================
+   5B. MAGNETIC ELEMENTS ATTRACTION (APPLE & LINEAR PHYSICS)
+   ========================================================================== */
+function initMagneticElements() {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  const magnets = document.querySelectorAll(
+    '.btn, .theme-switch, .avatar-circle-chip, .about-pill, .hero-tagline, .section-badge'
+  );
+
+  magnets.forEach(el => {
+    el.classList.add('magnetic-item');
+
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate3d(${x * 0.24}px, ${y * 0.24}px, 0)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = 'translate3d(0, 0, 0)';
+    });
+  });
+}
+
+/* ==========================================================================
+   5C. HERO AVATAR 3D GYROSCOPE DEPTH
+   ========================================================================== */
+function initHeroAvatarParallax() {
+  const hero = document.getElementById('home');
+  const avatar = document.querySelector('.hero-avatar-circular');
+  const chip = document.querySelector('.avatar-circle-chip');
+  if (!hero || !avatar || window.matchMedia('(pointer: coarse)').matches) return;
+
+  let targetRotX = 0, targetRotY = 0;
+  let curRotX = 0, curRotY = 0;
+  let isInside = false;
+  let rafId = null;
+
+  function renderHeroAvatar() {
+    if (!isInside) return;
+    curRotX += (targetRotX - curRotX) * 0.08;
+    curRotY += (targetRotY - curRotY) * 0.08;
+
+    avatar.style.transform = `perspective(1000px) rotateX(${curRotX.toFixed(2)}deg) rotateY(${curRotY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+    if (chip) {
+      chip.style.transform = `translateX(calc(-50% + ${(curRotY * 1.5).toFixed(1)}px)) translateY(${(-curRotX * 1.2).toFixed(1)}px)`;
+    }
+
+    rafId = requestAnimationFrame(renderHeroAvatar);
+  }
+
+  hero.addEventListener('mouseenter', () => {
+    isInside = true;
+    rafId = requestAnimationFrame(renderHeroAvatar);
+  });
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    targetRotX = -y * 14;
+    targetRotY = x * 14;
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    isInside = false;
+    if (rafId) cancelAnimationFrame(rafId);
+    targetRotX = 0;
+    targetRotY = 0;
+    curRotX = 0;
+    curRotY = 0;
+    avatar.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    if (chip) chip.style.transform = 'translateX(-50%) translateY(0)';
+  });
+}
+
+/* ==========================================================================
+   5D. BUTTERY SMOOTH ANCHOR SCROLL
+   ========================================================================== */
+function initSmoothScrollLinks() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#' || !href) return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const headerOffset = 76;
+        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: targetPos,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   CLICK RIPPLE EFFECT (CYBER WAVE)
+   ========================================================================== */
+function initClickRipple() {
+  window.addEventListener('click', (e) => {
+    const ripple = document.createElement('div');
+    ripple.className = 'click-ripple';
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
+    document.body.appendChild(ripple);
+
+    setTimeout(() => {
+      ripple.remove();
+    }, 650);
+  });
+}
+
+/* ==========================================================================
+   6. TYPING EFFECT
+   ========================================================================== */
 function initTypingEffect() {
   const typingElement = document.querySelector('.typing-text');
   if (!typingElement) return;
 
   const roles = [
     "Frontend Developer",
-    "Kỹ sư Phần mềm tương lai",
-    "UI/UX Web Enthusiast",
-    "Người đam mê mã nguồn mở"
+    "Sinh viên Kỹ thuật Phần mềm",
+    "Web Design Enthusiast",
+    "Người đam mê công nghệ"
   ];
 
   let roleIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
-  const typeSpeed = 100;
-  const deleteSpeed = 50;
-  const pauseEnd = 1800;
+  const typeSpeed = 90;
+  const deleteSpeed = 45;
+  const pauseEnd = 1900;
 
   function type() {
     const currentRole = roles[roleIndex];
@@ -109,6 +525,9 @@ function initTypingEffect() {
   type();
 }
 
+/* ==========================================================================
+   7. READING PROGRESS BAR
+   ========================================================================== */
 function initReadingProgressBar() {
   const progressBar = document.getElementById('reading-progress');
   if (!progressBar) return;
@@ -121,6 +540,9 @@ function initReadingProgressBar() {
   });
 }
 
+/* ==========================================================================
+   8. SCROLLSPY & HEADER
+   ========================================================================== */
 function initScrollSpyAndHeader() {
   const header = document.querySelector('.header');
   const sections = document.querySelectorAll('section[id]');
@@ -139,7 +561,7 @@ function initScrollSpyAndHeader() {
 
     sections.forEach(current => {
       const sectionHeight = current.offsetHeight;
-      const sectionTop = current.offsetTop - 120;
+      const sectionTop = current.offsetTop - 130;
       const sectionId = current.getAttribute('id');
 
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -154,6 +576,9 @@ function initScrollSpyAndHeader() {
   });
 }
 
+/* ==========================================================================
+   9. SCROLL TO TOP
+   ========================================================================== */
 function initScrollToTop() {
   const scrollBtn = document.getElementById('scroll-top');
   if (!scrollBtn) return;
@@ -174,6 +599,9 @@ function initScrollToTop() {
   });
 }
 
+/* ==========================================================================
+   10. SKILL PROGRESS ANIMATION
+   ========================================================================== */
 function initSkillBars() {
   const progressFills = document.querySelectorAll('.progress-fill');
   if (progressFills.length === 0) return;
@@ -196,6 +624,59 @@ function initSkillBars() {
   }
 }
 
+/* ==========================================================================
+   11. STAT COUNTERS ANIMATION (HERO STATS)
+   ========================================================================== */
+function initStatCounters() {
+  const statItems = document.querySelectorAll('.stat-item');
+  if (statItems.length === 0) return;
+
+  let started = false;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        statItems.forEach(item => {
+          const numEl = item.querySelector('.stat-num');
+          if (!numEl) return;
+          const text = numEl.textContent.trim();
+          
+          if (text.includes('%')) {
+            const target = parseInt(text, 10);
+            animateCount(numEl, 0, target, 1500, '%');
+          } else if (text.includes('+')) {
+            const target = parseInt(text, 10);
+            animateCount(numEl, 0, target, 1200, '+');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const heroSection = document.getElementById('home');
+  if (heroSection) observer.observe(heroSection);
+}
+
+function animateCount(el, start, end, duration, suffix = '') {
+  let startTime = null;
+  function update(currentTime) {
+    if (!startTime) startTime = currentTime;
+    const progress = Math.min((currentTime - startTime) / duration, 1);
+    const easeOutQuad = 1 - (1 - progress) * (1 - progress);
+    const current = Math.floor(easeOutQuad * (end - start) + start);
+    el.textContent = `${current}${suffix}`;
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      el.textContent = `${end}${suffix}`;
+    }
+  }
+  requestAnimationFrame(update);
+}
+
+/* ==========================================================================
+   12. TIMELINE TABS
+   ========================================================================== */
 function initTimelineTabs() {
   const tabBtns = document.querySelectorAll('.timeline-tab-btn');
   const timelineItems = document.querySelectorAll('.timeline-item');
@@ -210,6 +691,7 @@ function initTimelineTabs() {
       timelineItems.forEach(item => {
         if (filterType === 'all' || item.getAttribute('data-type') === filterType) {
           item.style.display = 'block';
+          item.style.animation = 'fadeInCard 0.4s ease forwards';
         } else {
           item.style.display = 'none';
         }
@@ -218,6 +700,9 @@ function initTimelineTabs() {
   });
 }
 
+/* ==========================================================================
+   13. PROJECT FILTER
+   ========================================================================== */
 function initProjectFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
@@ -242,49 +727,52 @@ function initProjectFilter() {
   });
 }
 
+/* ==========================================================================
+   14. PROJECT MODAL WINDOW
+   ========================================================================== */
 const projectData = {
   1: {
-    title: "Nền Tảng Thương Mại Điện Tử - TechStore",
+    title: "TechStore - Trang Web Bán Hàng Mô Phỏng",
     category: "Fullstack / E-Commerce",
-    image: "images/project-ecommerce.svg",
-    desc: "Hệ thống mua sắm thiết bị công nghệ trực tuyến toàn diện, hỗ trợ trải nghiệm người dùng tối ưu trên mọi màn hình. Ứng dụng cung cấp đầy đủ chức năng tìm kiếm, giỏ hàng, đặt hàng và quản lý sản phẩm.",
+    image: "images/anh2.jpeg",
+    desc: "Dự án thực hành xây dựng giao diện website bán hàng công nghệ. Tự học và áp dụng HTML5, CSS3, JavaScript để tạo giỏ hàng, bộ lọc sản phẩm và giao diện responsive.",
     features: [
       "Giao diện Responsive chuẩn UI/UX, hỗ trợ Dark/Light mode",
       "Quản lý trạng thái giỏ hàng theo thời gian thực với LocalStorage",
       "Bộ lọc nâng cao theo giá, phân loại mặt hàng, nhãn hiệu",
       "Quy trình thanh toán mô phỏng trực quan với xác thực form",
-      "Hiệu năng tải trang cao đạt 98 điểm Google Lighthouse"
+      "Hiệu năng tải trang cao đạt điểm tốt trên Google Lighthouse"
     ],
     tech: ["HTML5", "CSS3 / Flexbox / Grid", "JavaScript (ES6+)", "LocalStorage", "REST API"],
     demoUrl: "#",
     githubUrl: "https://github.com"
   },
   2: {
-    title: "Ứng Dụng Quản Lý Công Việc - FlowMaster Kanban",
+    title: "FlowMaster - Bảng Quản Lý Công Việc Đơn Giản",
     category: "Frontend Web App",
     image: "images/project-taskmanager.svg",
-    desc: "Bảng Kanban trực quan giúp các đội nhóm công nghệ theo dõi tiến độ công việc theo phương pháp Agile/Scrum. Hỗ trợ thao tác kéo thả mượt mà, phân loại mức độ ưu tiên và nhắc nhở thời hạn.",
+    desc: "Bài tập thực hành xây dựng ứng dụng quản lý công việc theo kiểu Kanban. Áp dụng kiến thức HTML5 Drag & Drop và JavaScript OOP đã học để tạo tính năng kéo thả thẻ công việc.",
     features: [
       "Hệ thống Drag & Drop API nguyên bản cho phép kéo thả thẻ nhiệm vụ linh hoạt",
       "Phân loại công việc theo trạng thái: Cần làm, Đang làm và Hoàn thành",
       "Gắn nhãn mức độ ưu tiên (Khẩn cấp, Trung bình, Thấp) với mã màu riêng biệt",
-      "Tìm kiếm nhanh và lọc thẻ theo thành viên hoặc hạn chót",
-      "Tự động lưu trữ tiến độ phiên làm việc trên trình duyệt"
+      "Tìm kiếm nhanh và lọc thẻ theo tiêu đề và trạng thái",
+      "Tự động lưu trữ tiến độ phiên làm việc trên LocalStorage"
     ],
     tech: ["HTML5 Semantic", "Modern CSS", "HTML Drag & Drop API", "JavaScript OOP", "Git"],
     demoUrl: "#",
     githubUrl: "https://github.com"
   },
   3: {
-    title: "Chuyên Trang Tin Tức & Blog Công Nghệ - Dev Insights",
+    title: "Dev Insights - Trang Blog Cá Nhân Đơn Giản",
     category: "Frontend / Content",
     image: "images/project-blog.svg",
-    desc: "Nền tảng chia sẻ kiến thức lập trình, xu hướng công nghệ và kinh nghiệm kỹ thuật dành cho cộng đồng lập trình viên. Thiết kế tối giản, tập trung vào trải nghiệm đọc bài viết không phân tâm.",
+    desc: "Dự án tự học xây dựng trang blog chia sẻ bài viết về lập trình. Thực hành Semantic HTML, CSS thuần và JavaScript DOM để tạo giao diện đọc tối giản và thân thiện.",
     features: [
       "Layout Typography tinh tế, dễ đọc với kích thước chữ và khoảng cách dòng chuẩn mực",
       "Thanh tiến độ đọc trang (Reading progress bar) thời gian thực",
       "Tính năng ước tính thời gian đọc bài viết tự động theo số từ",
-      "Phân mục bài viết theo chuyên đề: Frontend, Backend, UI/UX Design",
+      "Phân mục bài viết theo chuyên đề học tập: HTML/CSS, JS, Web",
       "Tối ưu hóa SEO với đầy đủ thẻ Meta Open Graph và Semantic HTML"
     ],
     tech: ["Semantic HTML5", "CSS Variables", "JavaScript DOM", "Responsive Layout", "SEO Best Practices"],
@@ -353,6 +841,9 @@ function initProjectModal() {
   });
 }
 
+/* ==========================================================================
+   15. CONTACT FORM VALIDATION & INTERACTION
+   ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
@@ -389,17 +880,16 @@ function initContactForm() {
   if (emailInput) {
     emailInput.addEventListener('blur', () => {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      validateInput(emailInput, emailRegex.test(emailInput.value.trim()), 'Vui lòng nhập địa chỉ email hợp lệ (vd: ten@domain.com)');
+      validateInput(emailInput, emailRegex.test(emailInput.value.trim()), 'Vui lòng nhập địa chỉ email hợp lệ');
     });
   }
 
   if (phoneInput) {
     phoneInput.addEventListener('blur', () => {
-      
       const val = phoneInput.value.trim();
       const phoneRegex = /^(0[3|5|7|8|9])[0-9]{8}$/;
       if (val.length > 0) {
-        validateInput(phoneInput, phoneRegex.test(val), 'Số điện thoại không hợp lệ (gồm 10 số, bắt đầu bằng 03, 05, 07, 08, 09)');
+        validateInput(phoneInput, phoneRegex.test(val), 'Số điện thoại gồm 10 số (bắt đầu bằng 03, 05, 07, 08, 09)');
       } else {
         const formGroup = phoneInput.closest('.form-group');
         formGroup.classList.remove('has-error');
@@ -430,15 +920,15 @@ function initContactForm() {
 
     if (isNameValid && isEmailValid && isMessageValid && isPhoneValid) {
       const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Đang gửi tin nhắn...';
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span>Đang gửi tin nhắn...</span> <span>⏳</span>';
       submitBtn.disabled = true;
 
       setTimeout(() => {
         showToast('🎉 Cảm ơn bạn! Tin nhắn đã được gửi thành công.', 'success');
         form.reset();
         document.querySelectorAll('.form-control').forEach(el => el.classList.remove('valid', 'invalid'));
-        submitBtn.textContent = originalText;
+        submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
       }, 1000);
     } else {
@@ -447,6 +937,9 @@ function initContactForm() {
   });
 }
 
+/* ==========================================================================
+   16. TOAST NOTIFICATIONS
+   ========================================================================== */
 function showToast(message, type = 'info') {
   let toastContainer = document.querySelector('.toast-container');
   if (!toastContainer) {
@@ -472,3 +965,71 @@ function showToast(message, type = 'info') {
     setTimeout(() => toast.remove(), 300);
   }, 3500);
 }
+
+/* ==========================================================================
+   17. QUICK EMAIL COPY FEATURE
+   ========================================================================== */
+function initEmailCopy() {
+  const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+  emailLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const email = link.textContent.trim().replace('mailto:', '');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(email).then(() => {
+          showToast(`📋 Đã sao chép: ${email}`, 'success');
+        }).catch(() => {});
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   18. SCROLL-DRIVEN REVEAL ANIMATIONS
+   ========================================================================== */
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.scroll-reveal');
+  if (revealElements.length === 0) return;
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+}
+
+/* ==========================================================================
+   19. AMBIENT LIQUID BLOBS SCROLL PARALLAX
+   ========================================================================== */
+function initScrollParallax() {
+  const blobs = document.querySelectorAll('.liquid-blob');
+  const heroStage = document.querySelector('.hero-avatar-circular-stage');
+  const bgCanvas = document.getElementById('bg-canvas');
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        if (blobs[0]) blobs[0].style.transform = `translate3d(0, ${scrolled * 0.12}px, 0)`;
+        if (blobs[1]) blobs[1].style.transform = `translate3d(0, ${scrolled * -0.09}px, 0)`;
+        if (blobs[2]) blobs[2].style.transform = `translate3d(0, ${scrolled * 0.16}px, 0)`;
+        if (heroStage && scrolled < 900) {
+          heroStage.style.transform = `translate3d(0, ${scrolled * 0.08}px, 0)`;
+        }
+        if (bgCanvas) {
+          bgCanvas.style.transform = `translate3d(0, ${scrolled * 0.04}px, 0)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+

@@ -1,0 +1,171 @@
+@media (max-width: 991px) {
+  .hero-section {
+    padding-top: 6.5rem;
+  }
+
+  .bento-hero-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .hero-intro-card,
+  .hero-avatar-card,
+  .hero-career-card {
+    grid-column: span 1;
+  }
+
+  .hero-avatar-card {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .extras-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certs-column,
+  .hobbies-column {
+    grid-column: span 1;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info-col,
+  .contact-form-col {
+    grid-column: span 1;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .site-header {
+    top: 0.75rem;
+    padding: 0 1rem;
+    width: 100%;
+  }
+
+  .nav-dock {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border-glass);
+    color: var(--text-main);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .custom-cursor,
+  .custom-cursor-follower {
+    display: none !important;
+  }
+
+  .hero-name {
+    font-size: 2.1rem;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  section {
+    padding: 3.5rem 0;
+  }
+
+  .bento-card {
+    padding: 1.35rem;
+  }
+
+  .avatar-wrapper {
+    width: 170px;
+    height: 170px;
+  }
+
+  .timeline-container::before {
+    left: 15px;
+  }
+
+  .timeline-item {
+    padding-left: 45px;
+  }
+
+  .timeline-dot {
+    left: 4px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hobbies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .scroll-top-btn {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .form-toast {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: 1.8rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .contact-form-card {
+    padding: 1.35rem;
+  }
+}
