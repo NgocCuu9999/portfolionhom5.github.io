@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./css/stylem.css">
 </head>
 <body>
   <canvas id="bg-canvas"></canvas>
@@ -19,8 +19,6 @@
     <div class="liquid-blob blob-3"></div>
     <div class="liquid-blob blob-4"></div>
   </div>
-  <div class="custom-cursor" id="custom-cursor"></div>
-  <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
   <header class="header">
     <div class="container nav-wrapper">
       <a href="#home" class="brand-logo" aria-label="Trang chủ">
@@ -87,20 +85,19 @@
     <section class="section hero" id="home">
       <div class="container">
         <div class="hero-spotlight-wrapper">
-          <!-- Circular Avatar Stage on Top -->
           <div class="hero-avatar-circular-stage">
             <div class="hero-avatar-circular tilt-card">
               <div class="avatar-circle-ring"></div>
               <div class="avatar-circle-img-wrap">
-                <img src="images/anh1.jpeg" alt="Ảnh đại diện Trần Minh Hiếu" width="220" height="220" loading="eager">
+                <img src="./images/anh1.png" alt="Ảnh đại diện Trần Minh Hiếu" width="220" height="220" loading="eager">
               </div>
               <div class="avatar-circle-chip">
-                <span>💻</span> Clean Code
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span>Clean Code</span>
               </div>
             </div>
           </div>
 
-          <!-- Content Placed Directly Below Avatar Frame -->
           <div class="hero-tagline">
             <span class="status-dot"></span>
             <span>Đang tìm kiếm cơ hội thực tập & học hỏi</span>
@@ -125,35 +122,12 @@
               <span>Liên Hệ Ngay</span>
             </a>
           </div>
-
-          <!-- Symmetric Stat Cards Dock Below Content -->
-          <div class="hero-spotlight-stats">
-            <div class="stat-item stat-card-glass tilt-card">
-              <span class="stat-num">1+</span>
-              <span class="stat-label">Năm tự học lập trình</span>
-              <span class="stat-sub">HTML5, CSS3, JavaScript</span>
-            </div>
-            <div class="stat-item stat-card-glass tilt-card">
-              <span class="stat-num">5+</span>
-              <span class="stat-label">Dự án học tập & cá nhân</span>
-              <span class="stat-sub">Thực hành xây dựng thực tế</span>
-            </div>
-            <div class="stat-item stat-card-glass tilt-card">
-              <span class="stat-num">80%</span>
-              <span class="stat-label">Tinh thần ham học hỏi</span>
-              <span class="stat-sub">Chủ động, kiên trì, cầu tiến</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>
     <section class="section" id="about">
       <div class="container">
         <div class="section-title-wrap scroll-reveal">
-          <div class="section-index-badge">
-            <span class="index-dot"></span> // 01 . IDENTITY ARCHITECTURE
-          </div>
-          <span class="section-badge">Thông Tin Cá Nhân</span>
           <h2 class="section-title">Giới Thiệu Bản Thân</h2>
           <p class="section-subtitle">Đôi nét về con người, định hướng chuyên môn và hành trình theo đuổi công nghệ.</p>
         </div>
@@ -161,7 +135,7 @@
           <div class="about-card-left tilt-card scroll-reveal scroll-reveal-delay-1">
             <div class="about-profile-header">
               <div class="about-profile-avatar-wrap">
-                <img src="images/anh1.jpeg" alt="Ảnh đại diện Trần Minh Hiếu" width="68" height="68" class="about-profile-avatar-img" loading="lazy">
+                <img src="./images/anh1.png" alt="Ảnh đại diện Trần Minh Hiếu" width="68" height="68" class="about-profile-avatar-img" loading="lazy">
                 <span class="about-avatar-online" title="Online / Sẵn sàng"></span>
               </div>
               <div class="about-profile-meta">
@@ -169,7 +143,8 @@
                   <span>Thông Tin Cơ Bản</span>
                 </h3>
                 <span class="about-profile-badge">
-                  <span>🎓</span> Trần Minh Hiếu • BDU
+                  <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                  <span>Trần Minh Hiếu • BDU</span>
                 </span>
               </div>
             </div>
@@ -207,47 +182,24 @@
           </div>
 
           <div class="about-story-card tilt-card scroll-reveal scroll-reveal-delay-2">
-            <div>
+            <div class="about-story-header">
+              <div class="about-story-icon-wrap">
+                <svg class="about-story-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+              </div>
+              <div class="about-profile-meta">
+                <h3 class="about-info-title">
+                  <span>Mục tiêu học tập</span>
+                </h3>
+              </div>
+            </div>
+            <div class="about-card-divider"></div>
+            <div class="about-story-body">
               <p>
                 Chào bạn! Tôi là một sinh viên năm 2 ngành Kỹ thuật Phần mềm tại Đại học Bình Dương, đang trong quá trình tìm hiểu và khám phá thế giới lập trình web. Tôi yêu thích việc tạo ra các giao diện web đẹp mắt, dễ sử dụng và luôn hào hứng khi biến ý tưởng thành sản phẩm thực tế.
               </p>
               <p>
                 Dù còn đang trong giai đoạn học tập, tôi luôn chủ động tự tìm hiểu thêm về HTML, CSS, JavaScript ngoài giờ học và tích cực xây dựng các dự án cá nhân để rèn luyện tay nghề. Tôi tin rằng sự kiên trì và tinh thần cầu tiến sẽ giúp tôi tiến bộ mỗi ngày.
               </p>
-            </div>
-            <div class="about-pill-row">
-              <span class="about-pill"><span>🎓</span> Kỹ Thuật Phần Mềm BDU</span>
-              <span class="about-pill"><span>💻</span> Frontend Web Developer</span>
-              <span class="about-pill"><span>⚡</span> Tự Học &amp; Cầu Tiến</span>
-            </div>
-          </div>
-
-          <div class="about-mindset-grid">
-            <div class="highlight-box tilt-card scroll-reveal scroll-reveal-delay-3">
-              <div class="highlight-icon-box">⚡</div>
-              <div class="highlight-content">
-                <h4 class="highlight-title">Tinh Thần Tự Học</h4>
-                <p class="highlight-desc">Chủ động tìm tòi kiến thức mới qua các khóa học online, tài liệu và thực hành dự án cá nhân.</p>
-                <div class="highlight-tags">
-                  <span class="highlight-tag">HTML5 / CSS3</span>
-                  <span class="highlight-tag">JavaScript ES6+</span>
-                  <span class="highlight-tag">freeCodeCamp</span>
-                  <span class="highlight-tag">Dự Án Cá Nhân</span>
-                </div>
-              </div>
-            </div>
-            <div class="highlight-box tilt-card scroll-reveal scroll-reveal-delay-4">
-              <div class="highlight-icon-box">🤝</div>
-              <div class="highlight-content">
-                <h4 class="highlight-title">Tinh Thần Đội Nhóm</h4>
-                <p class="highlight-desc">Sẵn sàng lắng nghe, trao đổi cởi mở và hỗ trợ bạn bè trong các bài tập nhóm trên trường.</p>
-                <div class="highlight-tags">
-                  <span class="highlight-tag">Git &amp; GitHub</span>
-                  <span class="highlight-tag">Học Nhóm CLB</span>
-                  <span class="highlight-tag">Giao Tiếp Tích Cực</span>
-                  <span class="highlight-tag">Chia Sẻ Kiến Thức</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -256,17 +208,15 @@
     <section class="section" id="objectives">
       <div class="container">
         <div class="section-title-wrap scroll-reveal">
-          <div class="section-index-badge">
-            <span class="index-dot"></span> // 02 . VISION ROADMAP
-          </div>
-          <span class="section-badge">Định Hướng Tương Lai</span>
           <h2 class="section-title">Mục Tiêu Nghề Nghiệp</h2>
           <p class="section-subtitle">Lộ trình phát triển bản thân bài bản, rõ ràng từ ngắn hạn đến dài hạn.</p>
         </div>
         <div class="objectives-roadmap-grid">
           <article class="objective-card tilt-card scroll-reveal scroll-reveal-delay-1">
             <div class="obj-header">
-              <div class="obj-icon">🎯</div>
+              <div class="obj-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              </div>
               <div>
                 <span class="section-badge" style="margin-bottom: 0.2rem;">Trong 1-2 năm tới</span>
                 <h3 class="obj-title">Mục Tiêu Ngắn Hạn</h3>
@@ -274,26 +224,21 @@
             </div>
             <div class="roadmap-stepper">
               <div class="roadmap-step-item">
-                <span class="step-num">01</span>
-                <div class="step-content">Nắm vững kiến thức nền tảng <strong>HTML5, CSS3, JavaScript</strong> và có khả năng tự xây dựng giao diện web hoàn chỉnh.</div>
+                <div class="step-content">Nắm vững <strong>HTML, CSS, JavaScript</strong>.</div>
               </div>
               <div class="roadmap-step-item">
-                <span class="step-num">02</span>
-                <div class="step-content">Học thêm một framework Frontend như <strong>ReactJS</strong> để mở rộng khả năng phát triển ứng dụng web.</div>
+                <div class="step-content">Học <strong>ReactJS</strong> và tìm cơ hội <strong>thực tập</strong>.</div>
               </div>
               <div class="roadmap-step-item">
-                <span class="step-num">03</span>
-                <div class="step-content">Tìm kiếm cơ hội <strong>thực tập Frontend Developer</strong> tại các công ty công nghệ để tích lũy kinh nghiệm thực tế.</div>
-              </div>
-              <div class="roadmap-step-item">
-                <span class="step-num">04</span>
-                <div class="step-content">Hoàn thành tốt các môn học chuyên ngành trên trường và duy trì kết quả học tập ổn định.</div>
+                <div class="step-content">Hoàn thành tốt chương trình <strong>Đại học</strong>.</div>
               </div>
             </div>
           </article>
           <article class="objective-card tilt-card scroll-reveal scroll-reveal-delay-2">
             <div class="obj-header">
-              <div class="obj-icon">🚀</div>
+              <div class="obj-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line><circle cx="12" cy="12" r="4"></circle></svg>
+              </div>
               <div>
                 <span class="section-badge" style="margin-bottom: 0.2rem;">Trong 3-5 năm tới</span>
                 <h3 class="obj-title">Mục Tiêu Dài Hạn</h3>
@@ -301,20 +246,13 @@
             </div>
             <div class="roadmap-stepper">
               <div class="roadmap-step-item">
-                <span class="step-num">01</span>
-                <div class="step-content">Tốt nghiệp Đại học với kết quả tốt và có nền tảng kiến thức vững chắc về <strong>Kỹ thuật Phần mềm</strong>.</div>
+                <div class="step-content"><strong>Tốt nghiệp Đại học</strong> với kết quả tốt.</div>
               </div>
               <div class="roadmap-step-item">
-                <span class="step-num">02</span>
-                <div class="step-content">Trở thành một <strong>Frontend Developer</strong> có khả năng làm việc độc lập và đóng góp hiệu quả trong team dự án thực tế.</div>
+                <div class="step-content">Trở thành <strong>Frontend Developer</strong> chuyên nghiệp.</div>
               </div>
               <div class="roadmap-step-item">
-                <span class="step-num">03</span>
-                <div class="step-content">Mở rộng kiến thức sang <strong>Backend (Node.js, Database)</strong> để hướng tới trở thành Fullstack Developer trong tương lai.</div>
-              </div>
-              <div class="roadmap-step-item">
-                <span class="step-num">04</span>
-                <div class="step-content">Đóng góp vào cộng đồng lập trình bằng cách chia sẻ kiến thức, viết blog kỹ thuật và tham gia các dự án mã nguồn mở.</div>
+                <div class="step-content">Học thêm <strong>Backend</strong> để hướng tới <strong>Fullstack Developer</strong>.</div>
               </div>
             </div>
           </article>
@@ -324,203 +262,69 @@
     <section class="section" id="skills">
       <div class="container">
         <div class="section-title-wrap scroll-reveal">
-          <div class="section-index-badge">
-            <span class="index-dot"></span> // 03 . TECHNICAL ARSENAL
-          </div>
-          <span class="section-badge">Năng Lực Công Nghệ</span>
           <h2 class="section-title">Kỹ Năng Kỹ Thuật</h2>
           <p class="section-subtitle">Các công nghệ, ngôn ngữ và công cụ tôi đang học tập và rèn luyện mỗi ngày.</p>
         </div>
-        <div class="skills-bento-grid">
-          <div class="skill-category-card skills-fe-card tilt-card scroll-reveal scroll-reveal-delay-1">
-            <h3 class="skill-cat-title">
-              <span>🎨</span> Frontend Technologies
-            </h3>
+        <div class="skills-showcase-wrapper">
+          <div class="skills-showcase-card tilt-card scroll-reveal scroll-reveal-delay-1">
             <div class="skill-bars">
               <div class="skill-bar-item">
                 <div class="skill-meta">
-                  <span>HTML5 / Semantic HTML</span>
-                  <span class="percentage">50%</span>
+                  <span class="skill-name">Python</span>
+                  <span class="percentage">40%</span>
                 </div>
                 <div class="progress-track">
-                  <div class="progress-fill" data-width="50%"></div>
+                  <div class="progress-fill" data-width="40%"></div>
                 </div>
               </div>
+
               <div class="skill-bar-item">
                 <div class="skill-meta">
-                  <span>CSS3 / Flexbox / Grid / Animations</span>
-                  <span class="percentage">50%</span>
+                  <span class="skill-name">C++</span>
+                  <span class="percentage">40%</span>
                 </div>
                 <div class="progress-track">
-                  <div class="progress-fill" data-width="50%"></div>
+                  <div class="progress-fill" data-width="40%"></div>
                 </div>
               </div>
+
               <div class="skill-bar-item">
                 <div class="skill-meta">
-                  <span>JavaScript (ES6+ / DOM APIs)</span>
-                  <span class="percentage">50%</span>
+                  <span class="skill-name">JavaScript</span>
+                  <span class="percentage">25%</span>
                 </div>
                 <div class="progress-track">
-                  <div class="progress-fill" data-width="50%"></div>
+                  <div class="progress-fill" data-width="25%"></div>
                 </div>
               </div>
+
               <div class="skill-bar-item">
                 <div class="skill-meta">
-                  <span>Responsive Web Design</span>
-                  <span class="percentage">50%</span>
+                  <span class="skill-name">Git / GitHub</span>
+                  <span class="percentage">45%</span>
                 </div>
                 <div class="progress-track">
-                  <div class="progress-fill" data-width="50%"></div>
+                  <div class="progress-fill" data-width="45%"></div>
                 </div>
               </div>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-badge">Tailwind CSS</span>
-              <span class="skill-badge">Bootstrap 5</span>
-              <span class="skill-badge">Sass/SCSS</span>
-              <span class="skill-badge">React Basics</span>
-            </div>
-          </div>
-          <div class="skill-category-card skills-be-card tilt-card scroll-reveal scroll-reveal-delay-2">
-            <h3 class="skill-cat-title">
-              <span>⚙️</span> Backend & Ngôn Ngữ Khác
-            </h3>
-            <div class="skill-bars">
+
               <div class="skill-bar-item">
                 <div class="skill-meta">
-                  <span>Node.js / Express</span>
-                  <span class="percentage">50%</span>
+                  <span class="skill-name">HTML</span>
+                  <span class="percentage">45%</span>
                 </div>
                 <div class="progress-track">
-                  <div class="progress-fill" data-width="50%"></div>
+                  <div class="progress-fill" data-width="45%"></div>
                 </div>
               </div>
+
               <div class="skill-bar-item">
                 <div class="skill-meta">
-                  <span>Python (Cơ bản & OOP)</span>
+                  <span class="skill-name">CSS</span>
                   <span class="percentage">50%</span>
                 </div>
                 <div class="progress-track">
                   <div class="progress-fill" data-width="50%"></div>
-                </div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-meta">
-                  <span>Java / Lập trình hướng đối tượng</span>
-                  <span class="percentage">50%</span>
-                </div>
-                <div class="progress-track">
-                  <div class="progress-fill" data-width="50%"></div>
-                </div>
-              </div>
-              <div class="skill-bar-item">
-                <div class="skill-meta">
-                  <span>MySQL / Cơ sở dữ liệu quan hệ</span>
-                  <span class="percentage">50%</span>
-                </div>
-                <div class="progress-track">
-                  <div class="progress-fill" data-width="50%"></div>
-                </div>
-              </div>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-badge">RESTful APIs</span>
-              <span class="skill-badge">MongoDB</span>
-              <span class="skill-badge">JSON</span>
-              <span class="skill-badge">C/C++ Foundation</span>
-            </div>
-          </div>
-          <div class="skill-category-card skills-tools-card tilt-card scroll-reveal scroll-reveal-delay-3">
-            <h3 class="skill-cat-title">
-              <span>🛠️</span> Công Cụ Phát Triển & Kỹ Năng Mềm
-            </h3>
-            <div class="tools-bento-inner">
-              <div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">Công Cụ & Môi Trường</h4>
-                <div class="tools-capsules-grid">
-                  <div class="tool-capsule-item">
-                    <span class="tool-capsule-icon">💻</span>
-                    <div class="tool-capsule-info">
-                      <span class="tool-capsule-name">VS Code</span>
-                      <span class="tool-capsule-role">Code Editor</span>
-                    </div>
-                  </div>
-                  <div class="tool-capsule-item">
-                    <span class="tool-capsule-icon">🐙</span>
-                    <div class="tool-capsule-info">
-                      <span class="tool-capsule-name">Git & GitHub</span>
-                      <span class="tool-capsule-role">Version Control</span>
-                    </div>
-                  </div>
-                  <div class="tool-capsule-item">
-                    <span class="tool-capsule-icon">🚀</span>
-                    <div class="tool-capsule-info">
-                      <span class="tool-capsule-name">Postman</span>
-                      <span class="tool-capsule-role">API Testing</span>
-                    </div>
-                  </div>
-                  <div class="tool-capsule-item">
-                    <span class="tool-capsule-icon">🔍</span>
-                    <div class="tool-capsule-info">
-                      <span class="tool-capsule-name">Chrome DevTools</span>
-                      <span class="tool-capsule-role">Debugging</span>
-                    </div>
-                  </div>
-                  <div class="tool-capsule-item">
-                    <span class="tool-capsule-icon">🎨</span>
-                    <div class="tool-capsule-info">
-                      <span class="tool-capsule-name">Figma</span>
-                      <span class="tool-capsule-role">UI / Handoff</span>
-                    </div>
-                  </div>
-                  <div class="tool-capsule-item">
-                    <span class="tool-capsule-icon">📋</span>
-                    <div class="tool-capsule-info">
-                      <span class="tool-capsule-name">Agile / Scrum</span>
-                      <span class="tool-capsule-role">Quy trình nhóm</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">Kỹ Năng Rèn Luyện</h4>
-                <div class="skill-bars">
-                  <div class="skill-bar-item">
-                    <div class="skill-meta">
-                      <span>Git & GitHub (Version Control)</span>
-                      <span class="percentage">50%</span>
-                    </div>
-                    <div class="progress-track">
-                      <div class="progress-fill" data-width="50%"></div>
-                    </div>
-                  </div>
-                  <div class="skill-bar-item">
-                    <div class="skill-meta">
-                      <span>Figma / UI Design Handoff</span>
-                      <span class="percentage">50%</span>
-                    </div>
-                    <div class="progress-track">
-                      <div class="progress-fill" data-width="50%"></div>
-                    </div>
-                  </div>
-                  <div class="skill-bar-item">
-                    <div class="skill-meta">
-                      <span>Kỹ năng làm việc nhóm & Trao đổi</span>
-                      <span class="percentage">50%</span>
-                    </div>
-                    <div class="progress-track">
-                      <div class="progress-fill" data-width="50%"></div>
-                    </div>
-                  </div>
-                  <div class="skill-bar-item">
-                    <div class="skill-meta">
-                      <span>Quản lý thời gian & Giải quyết vấn đề</span>
-                      <span class="percentage">50%</span>
-                    </div>
-                    <div class="progress-track">
-                      <div class="progress-fill" data-width="50%"></div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -531,16 +335,11 @@
     <section class="section" id="timeline">
       <div class="container">
         <div class="section-title-wrap scroll-reveal">
-          <div class="section-index-badge">
-            <span class="index-dot"></span> // 04 . CHRONICLE & MILESTONES
-          </div>
-          <span class="section-badge">Hành Trình Tích Lũy</span>
           <h2 class="section-title">Học Vấn & Kinh Nghiệm</h2>
           <p class="section-subtitle">Chặng đường học tập, rèn luyện thực chiến và các hoạt động phong trào nổi bật.</p>
         </div>
         <div class="timeline-tabs scroll-reveal scroll-reveal-delay-1">
-          <button class="timeline-tab-btn active" data-tab="all">Tất Cả</button>
-          <button class="timeline-tab-btn" data-tab="education">Học Vấn</button>
+          <button class="timeline-tab-btn active" data-tab="education">Học Vấn</button>
           <button class="timeline-tab-btn" data-tab="experience">Kinh Nghiệm</button>
           <button class="timeline-tab-btn" data-tab="activity">Hoạt Động</button>
         </div>
@@ -548,54 +347,34 @@
           <div class="timeline-item scroll-reveal" data-type="education">
             <div class="timeline-marker"></div>
             <div class="timeline-content-card">
-              <span class="timeline-date">2025 - Hiện tại (Dự kiến tốt nghiệp 2029)</span>
-              <h3 class="timeline-role">Cử nhân Kỹ thuật Phần mềm</h3>
-              <p class="timeline-org">Trường Đại học Bình Dương (BDU)</p>
+              <span class="timeline-date">2025 – Hiện tại</span>
+              <h3 class="timeline-role" style="margin-bottom: 0.85rem;">Học Vấn</h3>
               <p class="timeline-desc">
-                - Hiện đang là sinh viên năm 2 chuyên ngành Kỹ thuật Phần mềm.<br>
-                - Hoàn thành tốt các môn nền tảng: Nhập môn lập trình, Lập trình hướng đối tượng, Cơ sở dữ liệu, Cấu trúc dữ liệu & Giải thuật.<br>
-                - Tích cực tự học thêm về phát triển web (HTML, CSS, JavaScript) ngoài chương trình chính khóa để nâng cao kỹ năng thực hành.
+                - Sinh viên năm 2 ngành Kỹ thuật Phần mềm tại Đại học Bình Dương (BDU), dự kiến tốt nghiệp năm 2029.<br>
+                - Có kiến thức lập trình, cơ sở dữ liệu và phát triển web (HTML, CSS, JavaScript).
               </p>
-              <div class="timeline-tags">
-                <span class="skill-badge">Sinh viên năm 2</span>
-                <span class="skill-badge">Kỹ thuật Phần mềm</span>
-              </div>
             </div>
           </div>
-          <div class="timeline-item scroll-reveal scroll-reveal-delay-1" data-type="experience">
+          <div class="timeline-item scroll-reveal scroll-reveal-delay-1" data-type="experience" style="display: none;">
             <div class="timeline-marker"></div>
             <div class="timeline-content-card">
               <span class="timeline-date">2025 - Hiện tại</span>
               <h3 class="timeline-role">Tự Học & Phát Triển Dự Án Cá Nhân</h3>
               <p class="timeline-org">Học tập độc lập qua các nền tảng trực tuyến</p>
               <p class="timeline-desc">
-                - Tự học lập trình web Frontend thông qua các khóa học trên freeCodeCamp, YouTube và tài liệu trực tuyến.<br>
-                - Thực hành xây dựng các dự án cá nhân bằng HTML5, CSS3, JavaScript để củng cố kiến thức và tạo portfolio.<br>
-                - Rèn luyện kỹ năng sử dụng Git & GitHub để quản lý mã nguồn và làm quen với quy trình phát triển phần mềm.
+                - Tự học Frontend, thực hành HTML, CSS, JavaScript và sử dụng Git/GitHub để phát triển dự án cá nhân.
               </p>
-              <div class="timeline-tags">
-                <span class="skill-badge">Tự học</span>
-                <span class="skill-badge">HTML/CSS/JS</span>
-                <span class="skill-badge">Git & GitHub</span>
-              </div>
             </div>
           </div>
-          <div class="timeline-item scroll-reveal scroll-reveal-delay-2" data-type="activity">
+          <div class="timeline-item scroll-reveal scroll-reveal-delay-2" data-type="activity" style="display: none;">
             <div class="timeline-marker"></div>
             <div class="timeline-content-card">
               <span class="timeline-date">2025 - Hiện tại</span>
-              <h3 class="timeline-role">Thành Viên CLB Tin Học & Nhóm Học Tập</h3>
-              <p class="timeline-org">Câu Lạc Bộ Tin Học - Trường Đại học Bình Dương</p>
+              <h3 class="timeline-role" style="margin-bottom: 0.85rem;">Hoạt Động & Kiến Tập</h3>
               <p class="timeline-desc">
-                - Tham gia sinh hoạt CLB Tin học, cùng các bạn trao đổi kiến thức lập trình và hỗ trợ nhau trong học tập.<br>
-                - Tham gia các buổi học nhóm để làm bài tập lớn môn Cơ sở dữ liệu và Lập trình hướng đối tượng, rèn luyện kỹ năng làm việc nhóm.<br>
-                - Chủ động tìm hiểu và chia sẻ các tài liệu học lập trình web hữu ích cho các bạn cùng lớp.
+                - Tham gia sự kiện / hội thảo An toàn thông tin tại Thành phố mới Bình Dương.<br>
+                - Đi kiến tập thực tế tại VNPT.
               </p>
-              <div class="timeline-tags">
-                <span class="skill-badge">Thành viên CLB</span>
-                <span class="skill-badge">Học nhóm</span>
-                <span class="skill-badge">Chia sẻ kiến thức</span>
-              </div>
             </div>
           </div>
         </div>
@@ -604,97 +383,59 @@
     <section class="section" id="projects">
       <div class="container">
         <div class="section-title-wrap scroll-reveal">
-          <div class="section-index-badge">
-            <span class="index-dot"></span> // 05 . SHOWCASE PORTFOLIO
-          </div>
-          <span class="section-badge">Sản Phẩm Học Tập</span>
           <h2 class="section-title">Dự Án Cá Nhân</h2>
-          <p class="section-subtitle">Các dự án tôi đã tự xây dựng trong quá trình học tập và rèn luyện kỹ năng lập trình web.</p>
-        </div>
-        <div class="project-filter scroll-reveal scroll-reveal-delay-1">
-          <button class="filter-btn active" data-filter="all">Tất Cả Dự Án</button>
-          <button class="filter-btn" data-filter="ecommerce">Thương Mại Điện Tử</button>
-          <button class="filter-btn" data-filter="webapp">Web Application</button>
-          <button class="filter-btn" data-filter="content">Tin Tức / Blog</button>
+          <p class="section-subtitle">Dự án thực hành thiết kế website nổi bật.</p>
         </div>
         <div class="projects-grid">
-          <article class="project-card featured-project tilt-card scroll-reveal scroll-reveal-delay-1" data-category="ecommerce">
+          <article class="project-card featured-project tilt-card scroll-reveal scroll-reveal-delay-1" data-category="restaurant">
             <div class="project-thumb">
-              <img src="images/anh2.jpeg" alt="Giao diện TechStore E-Commerce" loading="lazy">
-              <span class="project-category-tag">E-Commerce</span>
-              <span class="featured-project-badge">🌟 DỰ ÁN TIÊU BIỂU</span>
+              <img src="./images/feane-thumb.jpg" alt="Feane Restaurant" loading="lazy">
+              <span class="project-category-tag">Nhà Hàng & Ẩm Thực</span>
+              <span class="featured-project-badge">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>DỰ ÁN TIÊU BIỂU</span>
+              </span>
             </div>
             <div class="project-body">
-              <h3 class="project-title">TechStore - Trang Web Bán Hàng Mô Phỏng</h3>
+              <h3 class="project-title">Feane - Website Nhà Hàng</h3>
               <p class="project-desc">
-                Dự án thực hành xây dựng giao diện website bán hàng công nghệ. Tự học và áp dụng HTML5, CSS3, JavaScript để tạo giỏ hàng, bộ lọc sản phẩm và giao diện responsive tối ưu cho mọi thiết bị.
+                Website ẩm thực đa trang với các tính năng chính: xem thực đơn, đặt bàn và đặt món trực tuyến, giao diện tương thích mọi thiết bị.
               </p>
-              <div class="project-tech-stack">
-                <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS3</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">LocalStorage</span>
-              </div>
               <div class="project-actions">
+                <a href="https://github.com/TranHieus/BAITAPGIUAKY" target="_blank" rel="noopener noreferrer" class="btn-project-live" title="Xem website Feane Restaurant trực tiếp">
+                  <span>Xem Dự Án</span>
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
                 <a href="#" class="btn-detail" data-project="1">
-                  <span>Chi tiết dự án</span>
+                  <span>Chi tiết</span>
                   <span>↗</span>
                 </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-link-icon" title="Xem mã nguồn trên GitHub">
+                <a href="https://github.com/TranHieus/BAITAPGIUAKY/tree/main/HIUUUU/DU%20AN" target="_blank" rel="noopener noreferrer" class="btn-link-icon" title="Xem mã nguồn trên GitHub">
                   <span>GitHub</span> ↗
                 </a>
               </div>
             </div>
           </article>
-          <article class="project-card tilt-card scroll-reveal scroll-reveal-delay-2" data-category="webapp">
+          <article class="project-card tilt-card scroll-reveal scroll-reveal-delay-2" data-category="cinema">
             <div class="project-thumb">
-              <img src="images/project-taskmanager.svg" alt="Giao diện Kanban Task Manager" loading="lazy">
-              <span class="project-category-tag">Web Application</span>
+              <img src="./images/cinema-thumb.jpg" alt="Star Cinema" loading="lazy">
+              <span class="project-category-tag">Giải Trí & Điện Ảnh</span>
             </div>
             <div class="project-body">
-              <h3 class="project-title">FlowMaster - Bảng Quản Lý Công Việc Đơn Giản</h3>
+              <h3 class="project-title">Star Cinema - Rạp Chiếu Phim</h3>
               <p class="project-desc">
-                Bài tập thực hành xây dựng ứng dụng quản lý công việc theo kiểu Kanban. Áp dụng kiến thức HTML5 Drag & Drop và JavaScript OOP đã học để tạo tính năng kéo thả thẻ công việc mượt mà.
+                Website rạp chiếu phim hiện đại với tính năng xem trailer, lịch chiếu phim, hệ thống đặt vé trực tuyến và quản lý thành viên.
               </p>
-              <div class="project-tech-stack">
-                <span class="tech-tag">HTML5 Drag & Drop</span>
-                <span class="tech-tag">CSS Grid</span>
-                <span class="tech-tag">JS OOP</span>
-                <span class="tech-tag">Responsive</span>
-              </div>
               <div class="project-actions">
+                <a href="https://github.com/TranHieus/BAITAPGIUAKY/tree/main/HIUUUU/DU%20AN" target="_blank" rel="noopener noreferrer" class="btn-project-live" title="Xem website Star Cinema trực tiếp">
+                  <span>Xem Dự Án</span>
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
                 <a href="#" class="btn-detail" data-project="2">
-                  <span>Chi tiết dự án</span>
+                  <span>Chi tiết</span>
                   <span>↗</span>
                 </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-link-icon" title="Xem mã nguồn trên GitHub">
-                  <span>GitHub</span> ↗
-                </a>
-              </div>
-            </div>
-          </article>
-          <article class="project-card tilt-card scroll-reveal scroll-reveal-delay-3" data-category="content">
-            <div class="project-thumb">
-              <img src="images/project-blog.svg" alt="Giao diện Dev Insights Blog" loading="lazy">
-              <span class="project-category-tag">Tin Tức / Blog</span>
-            </div>
-            <div class="project-body">
-              <h3 class="project-title">Dev Insights - Trang Blog Cá Nhân Đơn Giản</h3>
-              <p class="project-desc">
-                Dự án tự học xây dựng trang blog chia sẻ bài viết về lập trình. Thực hành Semantic HTML, CSS thuần và JavaScript DOM để tạo giao diện đọc tối giản, thân thiện và chuẩn SEO.
-              </p>
-              <div class="project-tech-stack">
-                <span class="tech-tag">Semantic HTML</span>
-                <span class="tech-tag">Clean CSS</span>
-                <span class="tech-tag">JavaScript DOM</span>
-                <span class="tech-tag">SEO Best Practice</span>
-              </div>
-              <div class="project-actions">
-                <a href="#" class="btn-detail" data-project="3">
-                  <span>Chi tiết dự án</span>
-                  <span>↗</span>
-                </a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-link-icon" title="Xem mã nguồn trên GitHub">
+                <a href="https://github.com/TranHieus/BAITAPGIUAKY" target="_blank" rel="noopener noreferrer" class="btn-link-icon" title="Xem mã nguồn trên GitHub">
                   <span>GitHub</span> ↗
                 </a>
               </div>
@@ -706,81 +447,69 @@
     <section class="section" id="extras">
       <div class="container">
         <div class="section-title-wrap scroll-reveal">
-          <div class="section-index-badge">
-            <span class="index-dot"></span> // 06 . CREDENTIALS & LIFE
-          </div>
-          <span class="section-badge">Thành Tựu & Đời Sống</span>
           <h2 class="section-title">Chứng Chỉ & Sở Thích</h2>
-          <p class="section-subtitle">Các khóa học đã hoàn thành, đang theo đuổi và những sở thích giúp cân bằng cuộc sống.</p>
+          <p class="section-subtitle">Thông tin về chứng chỉ chuyên môn và những sở thích giúp cân bằng cuộc sống.</p>
         </div>
         <div class="extras-bento-grid">
           <div class="extra-card tilt-card scroll-reveal scroll-reveal-delay-1">
             <h3 class="extra-head">
-              <span>🏅</span> Chứng Chỉ Chuyên Môn
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line><circle cx="15.5" cy="14.5" r="1.5"></circle></svg>
+              <span>Chứng Chỉ Chuyên Môn</span>
             </h3>
-            <div class="cert-list">
-              <div class="cert-item">
-                <div class="cert-icon">📜</div>
-                <div class="cert-info">
-                  <h4>Responsive Web Design Certification</h4>
-                  <p>Hoàn thành khóa học miễn phí trên <strong>freeCodeCamp</strong> về HTML5, CSS3, Flexbox, CSS Grid & Responsive Design (300 giờ thực hành).</p>
-                  <div class="cert-bottom-row">
-                    <span class="cert-date">📅 Hoàn thành: Tháng 06/2026</span>
-                    <span class="cert-status-pill completed">✓ Đã Hoàn Thành</span>
-                  </div>
-                </div>
+            <div class="cert-empty-state">
+              <div class="cert-empty-icon-wrap">
+                <svg class="cert-empty-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
               </div>
-              <div class="cert-item">
-                <div class="cert-icon">⚡</div>
-                <div class="cert-info">
-                  <h4>JavaScript Algorithms and Data Structures</h4>
-                  <p>Hoàn thành khóa học trên <strong>freeCodeCamp</strong> về JavaScript ES6, lập trình hướng đối tượng và các thuật toán cơ bản.</p>
-                  <div class="cert-bottom-row">
-                    <span class="cert-date">📅 Đang theo học</span>
-                    <span class="cert-status-pill in-progress">⚡ Đang Học Tập</span>
-                  </div>
-                </div>
-              </div>
-              <div class="cert-item">
-                <div class="cert-icon">🌐</div>
-                <div class="cert-info">
-                  <h4>Chứng Chỉ Tiếng Anh Kỹ Thuật</h4>
-                  <p>Có khả năng đọc hiểu tài liệu kỹ thuật bằng tiếng Anh cơ bản, đang tiếp tục cải thiện kỹ năng ngoại ngữ phục vụ công việc lập trình.</p>
-                  <div class="cert-bottom-row">
-                    <span class="cert-date">📅 Đang rèn luyện</span>
-                    <span class="cert-status-pill ongoing">🌐 Đang Rèn Luyện</span>
-                  </div>
-                </div>
+              <h4 class="cert-empty-title">Chưa có</h4>
+              <p class="cert-empty-desc">Hiện tại tôi chưa có chứng chỉ chính thức. Đang trong quá trình học tập và rèn luyện để tích lũy trong tương lai.</p>
+              <div class="cert-empty-status">
+                <span class="cert-status-pill in-progress">
+                  <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  <span>Đang Tích Lũy</span>
+                </span>
               </div>
             </div>
           </div>
           <div class="extra-card tilt-card scroll-reveal scroll-reveal-delay-2">
             <h3 class="extra-head">
-              <span>🎨</span> Sở Thích Cá Nhân
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              <span>Sở Thích Cá Nhân</span>
             </h3>
             <div class="hobbies-grid">
               <div class="hobby-item">
-                <div class="hobby-icon">🎬</div>
+                <div class="hobby-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+                </div>
                 <div class="hobby-name">Xem phim & đi rạp chiếu phim</div>
               </div>
               <div class="hobby-item">
-                <div class="hobby-icon">🎮</div>
+                <div class="hobby-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="11" x2="18.01" y2="11"></line><rect x="2" y="6" width="20" height="12" rx="4"></rect></svg>
+                </div>
                 <div class="hobby-name">Chơi game giải trí cùng bạn bè</div>
               </div>
               <div class="hobby-item">
-                <div class="hobby-icon">🔌</div>
+                <div class="hobby-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                </div>
                 <div class="hobby-name">Khám phá & trải nghiệm đồ công nghệ</div>
               </div>
               <div class="hobby-item">
-                <div class="hobby-icon">📷</div>
+                <div class="hobby-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                </div>
                 <div class="hobby-name">Chụp ảnh phong cảnh & đời thường</div>
               </div>
               <div class="hobby-item">
-                <div class="hobby-icon">☕</div>
+                <div class="hobby-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                </div>
                 <div class="hobby-name">Đi cà phê chill & gặp gỡ bạn bè</div>
               </div>
               <div class="hobby-item">
-                <div class="hobby-icon">🌍</div>
+                <div class="hobby-icon">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+                </div>
                 <div class="hobby-name">Đi chơi, khám phá những nơi mới</div>
               </div>
             </div>
@@ -791,41 +520,46 @@
     <section class="section" id="contact">
       <div class="container">
         <div class="section-title-wrap scroll-reveal">
-          <div class="section-index-badge">
-            <span class="index-dot"></span> // 07 . CONNECT TERMINAL
-          </div>
-          <span class="section-badge">Kết Nối Với Tôi</span>
           <h2 class="section-title">Gửi Tin Nhắn / Liên Hệ</h2>
           <p class="section-subtitle">Bạn có lời khuyên, cơ hội thực tập hoặc muốn trao đổi về lập trình? Hãy để lại tin nhắn bên dưới nhé!</p>
         </div>
         <div class="contact-grid">
           <div class="contact-info-card tilt-card scroll-reveal scroll-reveal-delay-1">
             <h3 class="about-info-title" style="margin-bottom: 2rem;">
-              <span>📬</span> Thông Tin Kết Nối
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+              <span>Thông Tin Kết Nối</span>
             </h3>
             <div class="contact-info-item">
-              <div class="contact-icon-box">📧</div>
+              <div class="contact-icon-box">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
               <div class="contact-text">
                 <h5>Email Cá Nhân</h5>
                 <p><a href="mailto:tranminhhieu.dev@gmail.com">25050011@student.bdu.edu.vn</a></p>
               </div>
             </div>
             <div class="contact-info-item">
-              <div class="contact-icon-box">📱</div>
+              <div class="contact-icon-box">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              </div>
               <div class="contact-text">
                 <h5>Số Điện Thoại</h5>
                 <p><a href="tel:0889773449">0889773449</a></p>
               </div>
             </div>
             <div class="contact-info-item">
-              <div class="contact-icon-box">📍</div>
+              <div class="contact-icon-box">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
               <div class="contact-text">
                 <h5>Khu Vực Sinh Sống</h5>
                 <p>Bình Dương, Việt Nam</p>
               </div>
             </div>
             <div class="contact-info-item">
-              <div class="contact-icon-box">💼</div>
+              <div class="contact-icon-box">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </div>
               <div class="contact-text">
                 <h5>Hồ Sơ Chuyên Môn</h5>
                 <p><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">linkedin.com/in/hieutran</a></p>
@@ -874,7 +608,7 @@
               </div>
               <button type="submit" class="btn btn-primary" style="width: 100%;">
                 <span>Gửi Tin Nhắn Ngay</span>
-                <span>🚀</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
               </button>
             </form>
           </div>
@@ -922,34 +656,40 @@
   </button>
   <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-container">
-      <button class="modal-close-btn" id="modal-close" aria-label="Đóng cửa sổ">✕</button>
+      <button class="modal-close-btn" id="modal-close" aria-label="Đóng cửa sổ">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
       <div class="modal-img-wrap">
         <img id="modal-img" src="" alt="Chi tiết dự án">
       </div>
       <div class="modal-body">
         <h3 class="modal-title" id="modal-title">Tiêu đề dự án</h3>
         <p class="modal-desc" id="modal-desc">Mô tả dự án...</p>
-        <h4 class="modal-features-title">✨ Các Tính Năng Nổi Bật:</h4>
+        <h4 class="modal-features-title">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span>Các Tính Năng Nổi Bật:</span>
+        </h4>
         <ul class="modal-features-list" id="modal-features">
         </ul>
-        <h4 class="modal-features-title">🛠️ Công Nghệ Áp Dụng:</h4>
+        <h4 class="modal-features-title">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <span>Công Nghệ Áp Dụng:</span>
+        </h4>
         <div class="project-tech-stack" id="modal-tech" style="margin-bottom: 1.5rem;">
         </div>
         <div class="modal-footer">
           <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
             <span>Xem Demo Trực Tiếp</span>
-            <span>🌐</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </a>
           <a href="https://github.com" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
             <span>Xem GitHub Code</span>
-            <span>💻</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
           </a>
         </div>
       </div>
     </div>
   </div>
-  <script src="js/main.js"></script>
+  <script src="./js/main.js"></script>
 </body>
 </html>
-
-The above content shows the entire, complete file contents of the requested file.

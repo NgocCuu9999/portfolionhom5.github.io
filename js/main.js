@@ -1,12 +1,6 @@
-/* ==========================================================================
-   MAIN JAVASCRIPT - INTERACTIVE & CYBER-CHIC EXPERIENCE
-   Tran Minh Hieu - Student Portfolio
-   ========================================================================== */
-
 document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initMobileNav();
-  initCustomCursor();
   initClickRipple();
   initInteractiveCanvas();
   initCardSpotlightAndTilt();
@@ -28,14 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollParallax();
 });
 
-/* ==========================================================================
-   1. THEME TOGGLE (DARK / LIGHT MODE)
-   ========================================================================== */
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
   if (!toggleBtn) return;
 
-  const currentTheme = localStorage.getItem('theme') || 
+  const currentTheme = localStorage.getItem('theme') ||
     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
   document.documentElement.setAttribute('data-theme', currentTheme);
@@ -55,9 +46,6 @@ function updateThemeIcon(btn, theme) {
   btn.setAttribute('aria-label', `Chuyển sang giao diện ${theme === 'dark' ? 'sáng' : 'tối'}`);
 }
 
-/* ==========================================================================
-   2. MOBILE NAVIGATION
-   ========================================================================== */
 function initMobileNav() {
   const mobileToggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
@@ -85,87 +73,6 @@ function initMobileNav() {
   });
 }
 
-/* ==========================================================================
-   3. CUSTOM CYBER CURSOR (DESKTOP INTERACTIVE)
-   ========================================================================== */
-function initCustomCursor() {
-  const cursor = document.getElementById('custom-cursor');
-  const follower = document.getElementById('custom-cursor-follower');
-
-  if (!cursor || !follower || window.matchMedia('(pointer: coarse)').matches) return;
-
-  let mouseX = -100, mouseY = -100;
-  let cursorX = -100, cursorY = -100;
-  let followerX = -100, followerY = -100;
-  let isInitialized = false;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    if (!isInitialized) {
-      cursorX = mouseX;
-      cursorY = mouseY;
-      followerX = mouseX;
-      followerY = mouseY;
-      isInitialized = true;
-    }
-  }, { passive: true });
-
-  window.addEventListener('mousedown', () => {
-    cursor.classList.add('clicking');
-    follower.classList.add('clicking');
-  });
-
-  window.addEventListener('mouseup', () => {
-    cursor.classList.remove('clicking');
-    follower.classList.remove('clicking');
-  });
-
-  function renderCursor() {
-    // Ultra smooth linear interpolation (Lerp)
-    cursorX += (mouseX - cursorX) * 0.75;
-    cursorY += (mouseY - cursorY) * 0.75;
-    followerX += (mouseX - followerX) * 0.12;
-    followerY += (mouseY - followerY) * 0.12;
-
-    cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
-    follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
-
-    requestAnimationFrame(renderCursor);
-  }
-  requestAnimationFrame(renderCursor);
-
-  // Interactive Hover Magnification across all clickable & card elements
-  const updateHoverElements = () => {
-    const interactiveElements = document.querySelectorAll(
-      'a, button, .btn, .theme-switch, .project-card, .skill-category-card, .objective-card, .hobby-item, .timeline-content-card, .highlight-box, .stat-card-glass, .developer-spec-terminal, .avatar-circle-chip, .about-pill, .filter-btn'
-    );
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.classList.add('hovering');
-        follower.classList.add('hovering');
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hovering');
-        follower.classList.remove('hovering');
-      });
-    });
-  };
-  updateHoverElements();
-
-  document.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
-    follower.style.opacity = '0';
-  });
-  document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-    follower.style.opacity = '1';
-  });
-}
-
-/* ==========================================================================
-   4. INTERACTIVE CONSTELLATION PARTICLES CANVAS
-   ========================================================================== */
 function initInteractiveCanvas() {
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
@@ -209,7 +116,6 @@ function initInteractiveCanvas() {
       if (this.x < 0 || this.x > width) this.speedX *= -1;
       if (this.y < 0 || this.y > height) this.speedY *= -1;
 
-      // Smooth Fluid Cursor Proximity
       if (mouse.x !== null && mouse.y !== null) {
         let dx = mouse.x - this.x;
         let dy = mouse.y - this.y;
@@ -255,7 +161,6 @@ function initInteractiveCanvas() {
     ctx.clearRect(0, 0, width, height);
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
-    // Connect particles
     for (let i = 0; i < particles.length; i++) {
       particles[i].update();
       particles[i].draw(isDark);
@@ -276,7 +181,6 @@ function initInteractiveCanvas() {
         }
       }
 
-      // Connect to mouse
       if (mouse.x !== null && mouse.y !== null) {
         let dx = particles[i].x - mouse.x;
         let dy = particles[i].y - mouse.y;
@@ -298,12 +202,9 @@ function initInteractiveCanvas() {
   animate();
 }
 
-/* ==========================================================================
-   5. CARD SPOTLIGHT GLOW EFFECT & 3D PERSPECTIVE TILT (SPRING LERP PHYSICS)
-   ========================================================================== */
 function initCardSpotlightAndTilt() {
   const cards = document.querySelectorAll(
-    '.hero-avatar-circular, .stat-card-glass, .developer-spec-terminal, .about-card-left, .objective-card, .skill-category-card, .timeline-content-card, .project-card, .extra-card, .contact-info-card, .contact-form-card, .highlight-box'
+    '.hero-avatar-circular, .stat-card-glass, .about-card-left, .about-story-card, .objective-card, .skills-showcase-card, .timeline-content-card, .project-card, .extra-card, .contact-info-card, .contact-form-card'
   );
 
   const isTouch = window.matchMedia('(pointer: coarse)').matches;
@@ -317,7 +218,6 @@ function initCardSpotlightAndTilt() {
 
     function renderTilt() {
       if (!isHovered) return;
-      // Smooth spring lerp interpolation
       currentX += (targetX - currentX) * 0.14;
       currentY += (targetY - currentY) * 0.14;
 
@@ -336,7 +236,6 @@ function initCardSpotlightAndTilt() {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      // Spotlight reflection coordinates
       card.style.setProperty('--mouse-x', `${x}px`);
       card.style.setProperty('--mouse-y', `${y}px`);
 
@@ -361,9 +260,6 @@ function initCardSpotlightAndTilt() {
   });
 }
 
-/* ==========================================================================
-   5B. MAGNETIC ELEMENTS ATTRACTION (APPLE & LINEAR PHYSICS)
-   ========================================================================== */
 function initMagneticElements() {
   if (window.matchMedia('(pointer: coarse)').matches) return;
   const magnets = document.querySelectorAll(
@@ -386,9 +282,6 @@ function initMagneticElements() {
   });
 }
 
-/* ==========================================================================
-   5C. HERO AVATAR 3D GYROSCOPE DEPTH
-   ========================================================================== */
 function initHeroAvatarParallax() {
   const hero = document.getElementById('home');
   const avatar = document.querySelector('.hero-avatar-circular');
@@ -438,9 +331,6 @@ function initHeroAvatarParallax() {
   });
 }
 
-/* ==========================================================================
-   5D. BUTTERY SMOOTH ANCHOR SCROLL
-   ========================================================================== */
 function initSmoothScrollLinks() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -460,9 +350,6 @@ function initSmoothScrollLinks() {
   });
 }
 
-/* ==========================================================================
-   CLICK RIPPLE EFFECT (CYBER WAVE)
-   ========================================================================== */
 function initClickRipple() {
   window.addEventListener('click', (e) => {
     const ripple = document.createElement('div');
@@ -477,9 +364,6 @@ function initClickRipple() {
   });
 }
 
-/* ==========================================================================
-   6. TYPING EFFECT
-   ========================================================================== */
 function initTypingEffect() {
   const typingElement = document.querySelector('.typing-text');
   if (!typingElement) return;
@@ -525,9 +409,6 @@ function initTypingEffect() {
   type();
 }
 
-/* ==========================================================================
-   7. READING PROGRESS BAR
-   ========================================================================== */
 function initReadingProgressBar() {
   const progressBar = document.getElementById('reading-progress');
   if (!progressBar) return;
@@ -540,9 +421,6 @@ function initReadingProgressBar() {
   });
 }
 
-/* ==========================================================================
-   8. SCROLLSPY & HEADER
-   ========================================================================== */
 function initScrollSpyAndHeader() {
   const header = document.querySelector('.header');
   const sections = document.querySelectorAll('section[id]');
@@ -576,9 +454,6 @@ function initScrollSpyAndHeader() {
   });
 }
 
-/* ==========================================================================
-   9. SCROLL TO TOP
-   ========================================================================== */
 function initScrollToTop() {
   const scrollBtn = document.getElementById('scroll-top');
   if (!scrollBtn) return;
@@ -599,9 +474,6 @@ function initScrollToTop() {
   });
 }
 
-/* ==========================================================================
-   10. SKILL PROGRESS ANIMATION
-   ========================================================================== */
 function initSkillBars() {
   const progressFills = document.querySelectorAll('.progress-fill');
   if (progressFills.length === 0) return;
@@ -613,10 +485,10 @@ function initSkillBars() {
           const width = fill.getAttribute('data-width') || '0%';
           fill.style.width = width;
         });
-        observer.disconnect(); 
+        observer.disconnect();
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.12 });
 
   const skillsSection = document.getElementById('skills');
   if (skillsSection) {
@@ -624,9 +496,6 @@ function initSkillBars() {
   }
 }
 
-/* ==========================================================================
-   11. STAT COUNTERS ANIMATION (HERO STATS)
-   ========================================================================== */
 function initStatCounters() {
   const statItems = document.querySelectorAll('.stat-item');
   if (statItems.length === 0) return;
@@ -640,7 +509,7 @@ function initStatCounters() {
           const numEl = item.querySelector('.stat-num');
           if (!numEl) return;
           const text = numEl.textContent.trim();
-          
+
           if (text.includes('%')) {
             const target = parseInt(text, 10);
             animateCount(numEl, 0, target, 1500, '%');
@@ -674,12 +543,24 @@ function animateCount(el, start, end, duration, suffix = '') {
   requestAnimationFrame(update);
 }
 
-/* ==========================================================================
-   12. TIMELINE TABS
-   ========================================================================== */
 function initTimelineTabs() {
   const tabBtns = document.querySelectorAll('.timeline-tab-btn');
   const timelineItems = document.querySelectorAll('.timeline-item');
+  if (tabBtns.length === 0) return;
+
+  function applyTimelineFilter(filterType) {
+    timelineItems.forEach(item => {
+      if (filterType === 'all' || item.getAttribute('data-type') === filterType) {
+        item.style.display = 'block';
+        item.classList.add('is-revealed');
+        item.style.animation = 'none';
+        void item.offsetWidth;
+        item.style.animation = 'fadeInCard 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
 
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -687,22 +568,16 @@ function initTimelineTabs() {
       btn.classList.add('active');
 
       const filterType = btn.getAttribute('data-tab');
-
-      timelineItems.forEach(item => {
-        if (filterType === 'all' || item.getAttribute('data-type') === filterType) {
-          item.style.display = 'block';
-          item.style.animation = 'fadeInCard 0.4s ease forwards';
-        } else {
-          item.style.display = 'none';
-        }
-      });
+      applyTimelineFilter(filterType);
     });
   });
+
+  const initialActive = document.querySelector('.timeline-tab-btn.active');
+  if (initialActive) {
+    applyTimelineFilter(initialActive.getAttribute('data-tab'));
+  }
 }
 
-/* ==========================================================================
-   13. PROJECT FILTER
-   ========================================================================== */
 function initProjectFilter() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
@@ -727,57 +602,34 @@ function initProjectFilter() {
   });
 }
 
-/* ==========================================================================
-   14. PROJECT MODAL WINDOW
-   ========================================================================== */
 const projectData = {
   1: {
-    title: "TechStore - Trang Web Bán Hàng Mô Phỏng",
-    category: "Fullstack / E-Commerce",
-    image: "images/anh2.jpeg",
-    desc: "Dự án thực hành xây dựng giao diện website bán hàng công nghệ. Tự học và áp dụng HTML5, CSS3, JavaScript để tạo giỏ hàng, bộ lọc sản phẩm và giao diện responsive.",
+    title: "Feane - Website Nhà Hàng",
+    category: "Web Design / Nhà Hàng & Ẩm Thực",
+    image: "images/feane-thumb.jpg",
+    desc: "Website ẩm thực đa trang với các tính năng chính: xem thực đơn, đặt bàn và đặt món trực tuyến, giao diện tương thích mọi thiết bị.",
     features: [
-      "Giao diện Responsive chuẩn UI/UX, hỗ trợ Dark/Light mode",
-      "Quản lý trạng thái giỏ hàng theo thời gian thực với LocalStorage",
-      "Bộ lọc nâng cao theo giá, phân loại mặt hàng, nhãn hiệu",
-      "Quy trình thanh toán mô phỏng trực quan với xác thực form",
-      "Hiệu năng tải trang cao đạt điểm tốt trên Google Lighthouse"
+      "Giao diện đa trang: Trang chủ, Thực đơn, Đặt bàn, Đặt món",
+      "Thiết kế Responsive mượt mà trên máy tính và điện thoại",
+      "Biểu mẫu đặt bàn và đặt món trực quan, tiện lợi"
     ],
-    tech: ["HTML5", "CSS3 / Flexbox / Grid", "JavaScript (ES6+)", "LocalStorage", "REST API"],
-    demoUrl: "#",
-    githubUrl: "https://github.com"
+    tech: ["HTML5", "CSS3", "JavaScript", "Responsive"],
+    demoUrl: "DU%20AN/BAI%202%20TUAN%205/home.html",
+    githubUrl: "https://github.com/TranHieus/BAITAPGIUAKY"
   },
   2: {
-    title: "FlowMaster - Bảng Quản Lý Công Việc Đơn Giản",
-    category: "Frontend Web App",
-    image: "images/project-taskmanager.svg",
-    desc: "Bài tập thực hành xây dựng ứng dụng quản lý công việc theo kiểu Kanban. Áp dụng kiến thức HTML5 Drag & Drop và JavaScript OOP đã học để tạo tính năng kéo thả thẻ công việc.",
+    title: "Star Cinema - Rạp Chiếu Phim",
+    category: "Web Design / Giải Trí & Điện Ảnh",
+    image: "images/cinema-thumb.jpg",
+    desc: "Website rạp chiếu phim hiện đại với tính năng xem trailer, lịch chiếu phim, hệ thống đặt vé trực tuyến và quản lý thành viên.",
     features: [
-      "Hệ thống Drag & Drop API nguyên bản cho phép kéo thả thẻ nhiệm vụ linh hoạt",
-      "Phân loại công việc theo trạng thái: Cần làm, Đang làm và Hoàn thành",
-      "Gắn nhãn mức độ ưu tiên (Khẩn cấp, Trung bình, Thấp) với mã màu riêng biệt",
-      "Tìm kiếm nhanh và lọc thẻ theo tiêu đề và trạng thái",
-      "Tự động lưu trữ tiến độ phiên làm việc trên LocalStorage"
+      "Giao diện rạp chiếu phim hiện đại, hỗ trợ hiệu ứng chuyển động mượt mà",
+      "Hệ thống lịch chiếu, danh sách phim đang chiếu và sắp chiếu",
+      "Biểu mẫu đặt vé, chọn suất chiếu và đăng ký thành viên trực quan"
     ],
-    tech: ["HTML5 Semantic", "Modern CSS", "HTML Drag & Drop API", "JavaScript OOP", "Git"],
-    demoUrl: "#",
-    githubUrl: "https://github.com"
-  },
-  3: {
-    title: "Dev Insights - Trang Blog Cá Nhân Đơn Giản",
-    category: "Frontend / Content",
-    image: "images/project-blog.svg",
-    desc: "Dự án tự học xây dựng trang blog chia sẻ bài viết về lập trình. Thực hành Semantic HTML, CSS thuần và JavaScript DOM để tạo giao diện đọc tối giản và thân thiện.",
-    features: [
-      "Layout Typography tinh tế, dễ đọc với kích thước chữ và khoảng cách dòng chuẩn mực",
-      "Thanh tiến độ đọc trang (Reading progress bar) thời gian thực",
-      "Tính năng ước tính thời gian đọc bài viết tự động theo số từ",
-      "Phân mục bài viết theo chuyên đề học tập: HTML/CSS, JS, Web",
-      "Tối ưu hóa SEO với đầy đủ thẻ Meta Open Graph và Semantic HTML"
-    ],
-    tech: ["Semantic HTML5", "CSS Variables", "JavaScript DOM", "Responsive Layout", "SEO Best Practices"],
-    demoUrl: "#",
-    githubUrl: "https://github.com"
+    tech: ["HTML5", "CSS3", "Bootstrap 5", "JavaScript DOM"],
+    demoUrl: "DU%20AN/BAI%203/index.html",
+    githubUrl: "https://github.com/TranHieus/BAITAPGIUAKY"
   }
 };
 
@@ -816,6 +668,11 @@ function initProjectModal() {
         techContainer.appendChild(span);
       });
 
+      const demoBtn = modalOverlay.querySelector('.modal-footer a.btn-primary');
+      const gitBtn = modalOverlay.querySelector('.modal-footer a.btn-secondary');
+      if (demoBtn && data.demoUrl) demoBtn.href = data.demoUrl;
+      if (gitBtn && data.githubUrl) gitBtn.href = data.githubUrl;
+
       modalOverlay.classList.add('open');
       document.body.style.overflow = 'hidden';
     });
@@ -841,9 +698,6 @@ function initProjectModal() {
   });
 }
 
-/* ==========================================================================
-   15. CONTACT FORM VALIDATION & INTERACTION
-   ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
@@ -921,25 +775,22 @@ function initContactForm() {
     if (isNameValid && isEmailValid && isMessageValid && isPhoneValid) {
       const submitBtn = form.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<span>Đang gửi tin nhắn...</span> <span>⏳</span>';
+      submitBtn.innerHTML = '<span>Đang gửi tin nhắn...</span> <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation: spin 1s linear infinite;"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>';
       submitBtn.disabled = true;
 
       setTimeout(() => {
-        showToast('🎉 Cảm ơn bạn! Tin nhắn đã được gửi thành công.', 'success');
+        showToast('Cảm ơn bạn! Tin nhắn đã được gửi thành công.', 'success');
         form.reset();
         document.querySelectorAll('.form-control').forEach(el => el.classList.remove('valid', 'invalid'));
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
       }, 1000);
     } else {
-      showToast('⚠️ Vui lòng kiểm tra lại các trường thông tin bị lỗi.', 'error');
+      showToast('Vui lòng kiểm tra lại các trường thông tin bị lỗi.', 'error');
     }
   });
 }
 
-/* ==========================================================================
-   16. TOAST NOTIFICATIONS
-   ========================================================================== */
 function showToast(message, type = 'info') {
   let toastContainer = document.querySelector('.toast-container');
   if (!toastContainer) {
@@ -950,12 +801,16 @@ function showToast(message, type = 'info') {
 
   const toast = document.createElement('div');
   toast.className = `toast toast-${type}`;
-  
-  let icon = '🔔';
-  if (type === 'success') icon = '✅';
-  if (type === 'error') icon = '❌';
 
-  toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
+  let iconSvg = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>';
+  if (type === 'success') {
+    iconSvg = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+  }
+  if (type === 'error') {
+    iconSvg = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>';
+  }
+
+  toast.innerHTML = `<span class="toast-icon">${iconSvg}</span> <span>${message}</span>`;
   toastContainer.appendChild(toast);
 
   setTimeout(() => {
@@ -966,9 +821,6 @@ function showToast(message, type = 'info') {
   }, 3500);
 }
 
-/* ==========================================================================
-   17. QUICK EMAIL COPY FEATURE
-   ========================================================================== */
 function initEmailCopy() {
   const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
   emailLinks.forEach(link => {
@@ -976,16 +828,13 @@ function initEmailCopy() {
       const email = link.textContent.trim().replace('mailto:', '');
       if (navigator.clipboard) {
         navigator.clipboard.writeText(email).then(() => {
-          showToast(`📋 Đã sao chép: ${email}`, 'success');
+          showToast(`Đã sao chép: ${email}`, 'success');
         }).catch(() => {});
       }
     });
   });
 }
 
-/* ==========================================================================
-   18. SCROLL-DRIVEN REVEAL ANIMATIONS
-   ========================================================================== */
 function initScrollReveal() {
   const revealElements = document.querySelectorAll('.scroll-reveal');
   if (revealElements.length === 0) return;
@@ -1004,9 +853,6 @@ function initScrollReveal() {
   revealElements.forEach(el => revealObserver.observe(el));
 }
 
-/* ==========================================================================
-   19. AMBIENT LIQUID BLOBS SCROLL PARALLAX
-   ========================================================================== */
 function initScrollParallax() {
   const blobs = document.querySelectorAll('.liquid-blob');
   const heroStage = document.querySelector('.hero-avatar-circular-stage');
@@ -1032,4 +878,3 @@ function initScrollParallax() {
     }
   }, { passive: true });
 }
-
