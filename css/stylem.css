@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   /* Color Palette - Cyber Dark (Mặc định) */
   --bg-primary: #07090e;
   --bg-secondary: #0d121d;
@@ -480,8 +480,6 @@ section {
   margin-bottom: 0.8rem;
 }
 
-50% { opacity: 0; }
-}
 
 .hero-bio {
   color: var(--text-muted);
